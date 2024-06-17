@@ -165,8 +165,8 @@ function LandingPage() {
 
                 <div className="container">
                   <div className="row features-cards justify-content-between">
-                    <div className="col-md-3 mx-3 mx-md-5 card">
-                      <div className="p-3  bg-light">
+                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
+                      <div className="p-3 bg-light">
                         <h5 className="fw-bold">Boards</h5>
                         <p>
                           Trello boards keep tasks organized and work moving
@@ -178,7 +178,7 @@ function LandingPage() {
                         </button>
                       </div>
                     </div>
-                    <div className="col-md-3 mx-3 mx-md-5 card">
+                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
                       <div className="p-3  bg-light">
                         <h5 className="fw-bold">Lists</h5>
 
@@ -192,7 +192,7 @@ function LandingPage() {
                         </button>
                       </div>
                     </div>
-                    <div className="col-md-3 mx-3 mx-md-5 card">
+                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
                       <div className="p-3  bg-light">
                         <h5 className="fw-bold">Cards</h5>
                         <p>
