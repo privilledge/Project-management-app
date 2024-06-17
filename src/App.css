@@ -3,7 +3,7 @@ body {
 }
 
 .logo {
-  height: 2em;
+  height: 3em;
   background: none;
 }
 .navbar-brand {
@@ -87,4 +87,9 @@ body {
   background-color: #12929e !important;
   color: #eaeaea;
   text-align: right;
+}
+@media (max-width: 700px) {
+  .logo {
+    height: 2em !important;
+  }
 }
