@@ -5,11 +5,11 @@ function Sidebar() {
   return (
     <>
       <nav className="sidebar">
-        <div className="logo-div" style={{ backgroundColor: "#182444" }}>
+        <div className="logo-div" style={{ backgroundColor: "" }}>
           <ul className="side-logo">
             <svg
               stroke="currentColor"
-              fill="#fff"
+              fill="#000"
               stroke-width="0"
               viewBox="0 0 512 512"
               height="1.5em"
@@ -18,11 +18,17 @@ function Sidebar() {
             >
               <path d="M313.8 303.9L469 32H365L209.4 303.8c-.4.7-.4 1.1 0 1.7l98.9 173.8c.4.7.8.7 1.6.7H413l-99.3-174.7c-.2-.3-.1-1 .1-1.4zM221.9 216.2L163 113c-.5-.8-1-1-2-1H65l58.9 104.4c.1.2.2.6.1.8L43 352h96.8c.8 0 1.2-.2 1.6-.9l80.5-133.7c.1-.3.1-.9 0-1.2z"></path>
             </svg>
-            <span className="fw-bold">myWorkSpace</span>
+            <span className="fw-bold" style={{ color: "#000000" }}>
+              myWorkSpace
+            </span>
           </ul>
+          <div className="container">
+            <hr style={{ color: "#000" }} />
+          </div>
         </div>
+
         <ul className="links">
-          <li>
+          <li className="active">
             <Link to="/pma/home">
               <span className="icon">
                 <svg
@@ -54,7 +60,6 @@ function Sidebar() {
                 >
                   <path
                     fill="none"
-                    stroke="#8A98B8"
                     stroke-width="2"
                     d="M9,15 L9,23 L1,23 L1,15 L9,15 Z M23,15 L23,23 L15,23 L15,15 L23,15 Z M9,1 L9,9 L1,9 L1,1 L9,1 Z M23,1 L23,9 L15,9 L15,1 L23,1 Z"
                   ></path>

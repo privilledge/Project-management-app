@@ -1,5 +1,5 @@
 body {
-  background-color: #fffafa !important;
+  background-color: #ffffff !important;
 }
 
 .logo {
@@ -17,7 +17,7 @@ body {
   justify-content: space-between;
   width: 100%;
   overflow: hidden;
-  background-color: #fffafa;
+  background-color: #ffffff;
   box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.1);
   padding: 0.7% 6% 0.7% 6%;
 }
@@ -45,13 +45,14 @@ body {
 }
 
 .signup {
-  background: linear-gradient(to right, #8aaae5, #fb6793);
+  background: linear-gradient(to right, #16b9c3, #ff007f);
   border: 1px solid #16b9c3 !important;
   border-radius: 0.3em !important;
   color: white !important;
   font-size: 20px !important;
   font-weight: 600 !important;
-  width: auto;
+  padding: 10px !important;
+  width: 30%;
 }
 
 .video-container {
@@ -73,8 +74,14 @@ body {
 .hero .row,
 .hero .features span,
 .hero .text-center {
-  background-color: #16b9c3 !important;
-  color: #eaeaea;
+  background-color: #f9ffff !important;
+  color: #101010;
+}
+
+.bg {
+  background: url("./assets/bg.jpg") !important;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 .features-cards {
   color: #101010 !important;
@@ -88,10 +95,14 @@ body {
   color: #eaeaea;
   text-align: right;
 }
+.top-bar {
+  background-color: #ffffff;
+  padding: 6px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+}
 
 .searchbar {
   width: 100%;
-  height: 2.5rem !important;
   border: none;
   outline: none;
   background: none;
@@ -103,14 +114,23 @@ body {
   display: flex;
 }
 .search {
-  border: 1px #ede9ea solid;
-  border-radius: 5em;
-  background-color: #ede9ea;
+  border: 1px #f9f9f9 solid;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  width: 85% !important;
+}
+.intro .create {
+  text-align: right;
+}
+.intro .create .btn {
+  background-color: #775da6;
+  padding: 6px;
+  color: #fff;
 }
 .intro-card {
   background-color: white !important;
   padding: 2%;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 .tasks {
   background-color: white !important;
@@ -141,5 +161,11 @@ body {
   }
   .imageIcon {
     display: none;
+  }
+  .signup {
+    width: auto;
+  }
+  .intro .create {
+    text-align: left;
   }
 }

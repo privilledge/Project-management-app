@@ -5,8 +5,8 @@ function Icon() {
       <div className="imageIcon">
         <img
           src={iconPic}
-          style={{ width: "43px" }}
-          className="icon-image"
+          style={{ width: "38px" }}
+          className="icon-image mt-2"
           alt=""
         />
       </div>

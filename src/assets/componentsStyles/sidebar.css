@@ -1,14 +1,15 @@
 /* src/Sidebar.css */
 
 .sidebar {
-  width: 220px;
-  background-color: #202b46;
+  width: 200px;
+  background-color: #ffffff;
   color: #fff;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  overflow-y: none;
+  border-right: 1px solid #bfbfbf;
 }
 
 .sidebar ul {
@@ -16,19 +17,21 @@
   padding: 0;
 }
 .sidebar ul li:hover {
-  background-color: #182444;
+  background-color: #eeebf4;
 }
 
 .sidebar ul li {
-  padding: 15px;
+  padding: 15px 15px 15px 20px;
+
   text-align: left;
 }
 
 .sidebar ul li a {
-  color: #fff;
+  color: #4b4b4b;
   text-decoration: none;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .sidebar ul li a .icon {
@@ -37,11 +40,11 @@
 }
 
 .sidebar ul li a:hover {
-  background-color: #182444;
+  background-color: #eeebf4;
 }
 
 .sidebar ul li a.active {
-  background-color: #555;
+  background-color: #eeebf4;
 }
 .sidebar ul li a .text {
   font-size: 14px !important;
@@ -49,11 +52,11 @@
 }
 
 .main-content {
-  margin-left: 210px;
+  margin-left: 200px;
   margin-right: 10px;
-  padding: 20px;
+
   transition: margin-left 0.3s;
-  background-color: #f8fafb;
+  background-color: #ede9ea;
 }
 .links {
   margin-top: 10%;
@@ -62,9 +65,9 @@
   margin-top: 80%;
 }
 .side-logo {
-  margin-left: 3%;
-  padding-top: 12% !important;
-  padding-bottom: 9% !important;
+  margin-left: 8%;
+  padding-top: 6.5% !important;
+  padding-bottom: 1.8% !important;
   font-family: sans-serif;
 }
 /* Adjust main content margin for smaller screens */
@@ -90,5 +93,5 @@
   }
 }
 svg {
-  color: #8a98b8 !important;
+  color: #4b4b4b !important;
 }

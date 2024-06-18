@@ -14,16 +14,13 @@ function App() {
     <>
       <BrowserRouter>
         <div className="app">
-          <Sidebar />
-          <div className="main-content">
-            <Routes>
-              <Route path="/pma" element={<LandingPage />} />
+          <Routes>
+            <Route path="/pma" element={<LandingPage />} />
 
-              <Route path="/pma/home" element={<Home />} />
-              <Route path="/pma/projects" element={<Projects />} />
-              <Route path="/pma/tasks" element={<Tasks />} />
-            </Routes>
-          </div>
+            <Route path="/pma/home" element={<Home />} />
+            <Route path="/pma/projects" element={<Projects />} />
+            <Route path="/pma/tasks" element={<Tasks />} />
+          </Routes>
         </div>
       </BrowserRouter>
     </>
