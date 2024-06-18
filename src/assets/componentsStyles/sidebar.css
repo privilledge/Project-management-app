@@ -74,6 +74,7 @@
 @media (max-width: 768px) {
   .sidebar {
     width: 60px;
+    overflow: hidden;
   }
   .sidebar ul li a .text {
     display: none;
@@ -82,7 +83,7 @@
     margin-left: 60px;
   }
   .settings {
-    position: absolute;
+    position: fixed;
     bottom: 0 !important;
   }
   .side-logo {

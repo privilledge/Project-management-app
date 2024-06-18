@@ -89,9 +89,9 @@ function LandingPage() {
             <div className="container col-xxl-8 px-4 py-0">
               <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-lg-6">
-                  <h1 class="display-6 fw-bold lh-1 mb-3">
+                  <h3 class=" fw-bold lh-1 mb-3">
                     See project progress at a glance
-                  </h1>
+                  </h3>
                   <hr />
                   <p class="lead ">
                     One source of truth means ultimate visibility into
@@ -123,9 +123,7 @@ function LandingPage() {
             <div className="container col-xxl-8 px-4 py-">
               <div class="row flex-lg-row align-items-center g-5 py-5">
                 <div class="col-lg-6">
-                  <h1 class="display-6 fw-bold lh-1 mb-3">
-                    Everything in one place
-                  </h1>
+                  <h3 class="fw-bold lh-1 mb-3">Everything in one place</h3>
                   <hr />
                   <p class="lead ">
                     Spend less time trying to get aligned and more time driving
@@ -156,9 +154,9 @@ function LandingPage() {
             <div className="container col-xxl-8 px-4 py-1">
               <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-lg-6">
-                  <h1 class="display-6 fw-bold lh-1 mb-3">
+                  <h3 class="fw-bold lh-1 mb-3">
                     Break down complex work into simple tasks
-                  </h1>{" "}
+                  </h3>{" "}
                   <hr />
                   <p class="lead">
                     Plan, organize, and collaborate on any company objective

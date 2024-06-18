@@ -75,7 +75,7 @@ body {
 .hero .features span,
 .hero .text-center {
   background-color: #f9ffff !important;
-  color: #101010;
+  color: #515151 !important;
 }
 
 .bg {
@@ -119,41 +119,57 @@ body {
   background-color: #f9f9f9;
   width: 85% !important;
 }
-.intro .create {
+.create {
   text-align: right;
 }
-.intro .create .btn {
+.create .btn {
   background-color: #775da6;
   padding: 6px;
   color: #fff;
 }
-.intro-card {
-  background-color: white !important;
-  padding: 2%;
-  border-radius: 12px;
+.home-cards .card {
+  border: none !important;
 }
-.tasks {
-  background-color: white !important;
-  padding: 2%;
-  border-radius: 5px;
-}
-.second {
-  margin: 1.2%;
-}
-.tasks .task {
-  padding: 1.5rem;
-  background-color: #f8fafb;
-  border: 1px solid #f8fafb;
-  border-radius: 6px;
-}
+
 .imageIcon {
   justify-content: flex-end;
   text-align: right !important;
-  border-radius: 50%;
 }
 .icon-image {
   border-radius: 50%;
   margin-top: 2%;
+}
+.first .home-cards .card {
+  min-height: 15rem !important;
+}
+.second .home-cards .card {
+  min-height: 15rem;
+}
+.projects-cards .card {
+  min-height: 6rem;
+}
+.projects-cards .done {
+  background-color: #e4ffeb;
+  border: 1px solid #e4ffeb;
+}
+.projects-cards .new {
+  background-color: #fff4e9;
+  border: 1px solid #fff4e9;
+}
+.projects-cards .in-progress {
+  background-color: #f5edff;
+  border: 1px solid #f5edff;
+}
+.status-btn {
+  text-align: right;
+}
+.status {
+  width: fit-content !important;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  font-size: 14px;
 }
 @media (max-width: 700px) {
   .logo {
@@ -165,7 +181,13 @@ body {
   .signup {
     width: auto;
   }
-  .intro .create {
+  .create {
     text-align: left;
+    width: 10rem !important;
+    padding: 1px !important;
+  }
+  .home-cards .card,
+  .projects-cards .card {
+    margin: 3px;
   }
 }

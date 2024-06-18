@@ -7,9 +7,8 @@ function Home() {
     <>
       <Sidebar />
       <div className="main-content">
-        <div className="top-bar">
-          <TopBar />
-        </div>
+        <TopBar />
+
         <div className="container">
           <div className="intro">
             <Row>
@@ -43,9 +42,51 @@ function Home() {
             </Row>
           </div>
 
-          <div className="first-card mt-0"></div>
-          <div className="second mt-2"></div>
+          <div className="first">
+            <div className="row home-cards">
+              <div className=" col-lg-5">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 className="fw-bold">Your calendar</h6>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-7">
+                <div class="card">
+                  <div className="card-body">
+                    <h6 className="fw-bold">Tasks</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="second mt-2">
+            <div className="row home-cards">
+              <div className=" col-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 className="fw-bold">Project directory</h6>
+                  </div>
+                </div>
+              </div>
+              <div className=" col-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 className="fw-bold">Your calendar</h6>
+                  </div>
+                </div>
+              </div>
+              <div className=" col-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 className="fw-bold">Dashboards</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <br />
       </div>
     </>
   );
