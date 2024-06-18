@@ -5,10 +5,15 @@ import tempImage from "../assets/holder2.jpg";
 import placeHolder from "../assets/holder.jpg";
 import placeHolder2 from "../assets/place.jpg";
 import { Row, Col } from "react-bootstrap";
-import listIcon from "../assets/icons/list.svg";
+import { useNavigate } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 function LandingPage() {
+  const navigate = useNavigate();
+
+  const homePage = () => {
+    navigate("/pma/home");
+  };
   return (
     <>
       <body>
@@ -17,7 +22,9 @@ function LandingPage() {
             <img src={smallLogo} alt="" className="logo" />
           </a>
 
-          <button className="nav-link btn btn-primary">Log in</button>
+          <button className="nav-link btn btn-primary" onClick={homePage}>
+            Log in
+          </button>
         </nav>
         <div className="container-fluid px-0">
           <div className="container">

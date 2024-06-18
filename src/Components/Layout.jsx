@@ -1,21 +1,7 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import Sidebar from "./Sidebar";
 function Layout() {
-  return (
-    <>
-      <div style={{ display: "flex" }}>
-        <nav style={{ width: "200px", background: "red", padding: "1rem" }}>
-          <ul>
-            <li>
-              <Link to="/pma">Home</Link>
-            </li>
-          </ul>
-        </nav>
-        <main style={{ marginLeft: "220px" }}>
-          <Outlet />
-        </main>
-      </div>
-    </>
-  );
+  return <></>;
 }
 export default Layout;
