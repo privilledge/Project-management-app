@@ -20,14 +20,13 @@ function Tasks() {
                   <div className="mt-3">
                     <div className="tasks-list">
                       <div className="row">
-                        <Col className="col-lg-8 col-md-7 col-sm-6">
+                        <Col className="col-lg-8 col-md-7 col-sm-7">
                           <span className="p-1" style={{ fontWeight: "500" }}>
                             Finish this component
                           </span>
                         </Col>
                         <Col
-                          md={3}
-                          className="col-lg-4 col-sm-6  col-md-7"
+                          className="col-lg-4 col-sm-6  col-md-5"
                           style={{ textAlign: "right" }}
                         >
                           <span style={{ cursor: "pointer" }}>
@@ -101,14 +100,13 @@ function Tasks() {
                   <div className="mt-3">
                     <div className="tasks-list">
                       <div className="row">
-                        <Col className="col-lg-8 col-md-7 col-sm-6">
+                        <Col className="col-lg-8 col-md-7 col-sm-7">
                           <span className="p-1" style={{ fontWeight: "500" }}>
                             Finish this component
                           </span>
                         </Col>
                         <Col
-                          md={3}
-                          className="col-lg-4 col-sm-6  col-md-7"
+                          className="col-lg-4 col-sm-5  col-md-7"
                           style={{ textAlign: "right" }}
                         >
                           <span className="p-2" style={{ cursor: "pointer" }}>
@@ -159,14 +157,13 @@ function Tasks() {
                   <div className="mt-3">
                     <div className="tasks-list">
                       <div className="row">
-                        <Col className="col-lg-8 col-md-7 col-sm-6">
+                        <Col className="col-lg-8 col-md-7 col-sm-8">
                           <span className="p-1" style={{ fontWeight: "500" }}>
                             Finish this component
                           </span>
                         </Col>
                         <Col
-                          md={3}
-                          className="col-lg-4 col-sm-6  col-md-7"
+                          className="col-lg-4 col-sm-6  col-md-4"
                           style={{ textAlign: "right" }}
                         >
                           <span className="p-2" style={{ cursor: "pointer" }}>
