@@ -171,6 +171,9 @@ body {
   border: 1px solid #ffffff;
   font-size: 14px;
 }
+.task {
+  min-height: 560px;
+}
 @media (max-width: 700px) {
   .logo {
     height: 2.5em !important;

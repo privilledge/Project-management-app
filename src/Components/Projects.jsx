@@ -43,12 +43,40 @@ function Projects() {
           <div className="projects-cards mt-5">
             <Row>
               <Col md={4}>
-                <div className="card done p-1">
-                  <div className="card-body">Task 1</div>
+                <div className="card done p-1 mb-1">
+                  <div className="card-body">
+                    {" "}
+                    <div className="row d-flex">
+                      <div className="col">
+                        {" "}
+                        <h6 className="fw-bold">Project name</h6>
+                      </div>
+
+                      <div className="status-btn col mb-1">
+                        <button className="status" style={{ width: "6rem" }}>
+                          status
+                        </button>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p>
+                        This is the project description. It is a short summary
+                        of what the projects is about
+                      </p>
+                    </div>
+                    <div className="dates">
+                      <h6 style={{ fontSize: "14px" }}>
+                        Added date : 06/08/2024
+                      </h6>
+                      <h6 style={{ fontSize: "14px" }}>
+                        Due date : 19/11/2024
+                      </h6>
+                    </div>
+                  </div>
                 </div>
               </Col>
               <Col md={4}>
-                <div className="card in-progress p-1">
+                <div className="card in-progress p-1 mb-1">
                   <div className="card-body">
                     <div className="row d-flex">
                       <div className="col">
@@ -62,12 +90,120 @@ function Projects() {
                         </button>
                       </div>
                     </div>
+                    <div className="description">
+                      <p>
+                        This is the project description. It is a short summary
+                        of what the projects is about
+                      </p>
+                    </div>
+                    <div className="dates">
+                      <h6 style={{ fontSize: "14px" }}>
+                        Added date : 06/08/2024
+                      </h6>
+                      <h6 style={{ fontSize: "14px" }}>
+                        Due date : 19/11/2024
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </Col>
               <Col md={4}>
-                <div className="card new p-1">
-                  <div className="card-body">Task 1</div>
+                <div className="card new p-1 mb-1">
+                  <div className="card-body">
+                    {" "}
+                    <div className="row d-flex">
+                      <div className="col">
+                        {" "}
+                        <h6 className="fw-bold">Project name</h6>
+                      </div>
+
+                      <div className="status-btn col mb-1">
+                        <button className="status" style={{ width: "6rem" }}>
+                          status
+                        </button>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p>
+                        This is the project description. It is a short summary
+                        of what the projects is about
+                      </p>
+                    </div>
+                    <div className="dates">
+                      <h6 style={{ fontSize: "14px" }}>
+                        Added date : 06/08/2024
+                      </h6>
+                      <h6 style={{ fontSize: "14px" }}>
+                        Due date : 19/11/2024
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="card new p-1 mb-1">
+                  <div className="card-body">
+                    {" "}
+                    <div className="row d-flex">
+                      <div className="col">
+                        {" "}
+                        <h6 className="fw-bold">Project name</h6>
+                      </div>
+
+                      <div className="status-btn col mb-1">
+                        <button className="status" style={{ width: "6rem" }}>
+                          status
+                        </button>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p>
+                        This is the project description. It is a short summary
+                        of what the projects is about
+                      </p>
+                    </div>
+                    <div className="dates">
+                      <h6 style={{ fontSize: "14px" }}>
+                        Added date : 06/08/2024
+                      </h6>
+                      <h6 style={{ fontSize: "14px" }}>
+                        Due date : 19/11/2024
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="card done p-1 mb-1">
+                  <div className="card-body">
+                    {" "}
+                    <div className="row d-flex">
+                      <div className="col">
+                        {" "}
+                        <h6 className="fw-bold">Project name</h6>
+                      </div>
+
+                      <div className="status-btn col mb-1">
+                        <button className="status" style={{ width: "6rem" }}>
+                          status
+                        </button>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p>
+                        This is the project description. It is a short summary
+                        of what the projects is about
+                      </p>
+                    </div>
+                    <div className="dates">
+                      <h6 style={{ fontSize: "14px" }}>
+                        Added date : 06/08/2024
+                      </h6>
+                      <h6 style={{ fontSize: "14px" }}>
+                        Due date : 19/11/2024
+                      </h6>
+                    </div>
+                  </div>
                 </div>
               </Col>
             </Row>
