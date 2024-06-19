@@ -47,12 +47,12 @@ function Projects() {
                   <div className="card-body">
                     {" "}
                     <div className="row d-flex">
-                      <div className="col">
+                      <div className="col-7">
                         {" "}
                         <h6 className="fw-bold">Project name</h6>
                       </div>
 
-                      <div className="status-btn col mb-1">
+                      <div className="status-btn col-5 mb-1">
                         <button className="status" style={{ width: "6rem" }}>
                           status
                         </button>

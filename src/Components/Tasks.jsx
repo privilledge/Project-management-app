@@ -10,7 +10,7 @@ function Tasks() {
       <div className="main-content">
         <TopBar />
         <div className="container">
-          <div className="row m-3">
+          <div className="row mt-2">
             <Col md="4">
               <div className="card task p-0 mb-2 todo-tasks">
                 <div className="card-body">
