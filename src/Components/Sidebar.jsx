@@ -87,7 +87,7 @@ function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link to="/pma/projects">
+            <Link to="/pma/calendar">
               <span className="icon">
                 <svg
                   stroke="currentColor"

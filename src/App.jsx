@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import Projects from "./Components/Projects";
 import Tasks from "./Components/Tasks";
 import Sidebar from "./Components/Sidebar";
+import Calendar from "./Components/Calendar";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/pma/home" element={<Home />} />
             <Route path="/pma/projects" element={<Projects />} />
             <Route path="/pma/tasks" element={<Tasks />} />
+            <Route path="/pma/calendar" element={<Calendar />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
