@@ -152,7 +152,7 @@ body {
   background-color: #e4ffeb;
   border: 1px solid #e4ffeb;
 }
-.projects-cards .new {
+.projects-cards .not-started {
   background-color: #fff4e9;
   border: 1px solid #fff4e9;
 }
@@ -161,7 +161,7 @@ body {
   border: 1px solid #f5edff;
 }
 .status-btn {
-  text-align: right;
+  text-align: right !important;
 }
 .status {
   width: fit-content !important;
@@ -176,23 +176,26 @@ body {
   margin: 3%;
   padding-bottom: 1%;
 }
-.todo-item {
-  background: #fffff1;
+.todo-item,
+.completed-item {
+  background: #ffffff;
   border-radius: 5px;
+  cursor: pointer;
 }
 .star-task {
   text-align: right;
   cursor: pointer;
 }
-.todo-item {
-  cursor: pointer;
+.todo-title {
+  font-size: 15px;
 }
+
 /* ========================================== */
 /* custom-calendar.css */
 
 /* Change the background color of the calendar */
 .fc {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 /* Style the header */
@@ -203,15 +206,17 @@ body {
 
 /* Style the day headers */
 .fc-col-header-cell {
-  background-color: #d3c5e5;
-  color: white;
+  background-color: #ffffff;
+  color: #000 !important;
+  text-decoration: none !important;
 }
 
 /* Style the events */
 .fc-event {
-  background-color: #735da5;
-  border: 1px solid #735da5;
+  background-color: #a698c6;
+  border: 1px solid #a698c6;
   color: white;
+  font-size: 13px !important;
 }
 
 /* Style the event hover */
@@ -222,16 +227,18 @@ body {
 
 /* Style the day numbers */
 .fc-daygrid-day-number {
-  color: #555;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* Style the current day */
 .fc-day-today {
-  background-color: #611e9b;
+  background-color: #d3c5e5 !important;
 }
 .fc-toolbar-title {
   font-size: 24px; /* Increase font size */
-  font-weight: bold; /* Make the text bold */
+  font-weight: 600; /* Make the text bold */
   color: #000; /* Change text color */
 }
 .fc-today {

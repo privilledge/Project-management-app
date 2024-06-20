@@ -7,7 +7,7 @@ function Searchbar() {
           <svg
             stroke="currentColor"
             fill="#cbcbcb"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 1024 1024"
             height="1.4em"
             width="1.4em"

@@ -23,7 +23,7 @@ function Home() {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 24 24"
                     height="1.3em"
                     width="1.3em"
@@ -32,7 +32,7 @@ function Home() {
                     <path
                       fill="none"
                       stroke="#fff"
-                      stroke-width="2"
+                      strokeWidth="2"
                       d="M12,18 L12,6 M6,12 L18,12"
                     ></path>
                   </svg>
