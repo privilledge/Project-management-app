@@ -209,7 +209,6 @@ function Projects() {
             </Row>
           </div>
         </div>
-        <br />
       </div>
     </>
   );

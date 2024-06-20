@@ -171,8 +171,21 @@ body {
   border: 1px solid #ffffff;
   font-size: 14px;
 }
-.task {
-  min-height: 560px;
+
+.tasks-container {
+  margin: 3%;
+  padding-bottom: 1%;
+}
+.todo-item {
+  background: #fffff1;
+  border-radius: 5px;
+}
+.star-task {
+  text-align: right;
+  cursor: pointer;
+}
+.todo-item {
+  cursor: pointer;
 }
 /* ========================================== */
 /* custom-calendar.css */
@@ -243,5 +256,8 @@ body {
   .home-cards .card,
   .projects-cards .card {
     margin: 3px;
+  }
+  .tasks-container {
+    margin: 0%;
   }
 }
