@@ -191,58 +191,40 @@ body {
 }
 
 /* ========================================== */
-/* custom-calendar.css */
 
-/* Change the background color of the calendar */
-.fc {
-  background-color: #ffffff;
+/* Styling the toolbar */
+.rbc-toolbar {
+  /* background-color: #d3c5e5; */
+  padding: 10px;
 }
 
-/* Style the header */
-.fc-toolbar.fc-header-toolbar {
-  margin-top: 1%;
-  color: #000;
-}
-
-/* Style the day headers */
-.fc-col-header-cell {
-  background-color: #ffffff;
+/* Styling events */
+.rbc-event {
+  background-color: #fb9fd3 !important;
   color: #000 !important;
-  text-decoration: none !important;
-}
-
-/* Style the events */
-.fc-event {
-  background-color: #a698c6;
-  border: 1px solid #a698c6;
-  color: white;
+  border-radius: 1px !important;
   font-size: 13px !important;
+  padding: 0 !important;
 }
 
-/* Style the event hover */
-.fc-event:hover {
-  background-color: #4e3f72;
-  border-color: #4e3f72;
+/* Styling the selected event */
+.rbc-selected {
+  background-color: #bbdcf6 !important;
 }
 
-/* Style the day numbers */
-.fc-daygrid-day-number {
-  color: #000;
-  font-weight: 700;
-  text-decoration: none;
+.rbc-btn {
+  background-color: #3174ad !important;
+  color: white;
+  border: none;
+  padding: 8px 12px !important;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-/* Style the current day */
-.fc-day-today {
-  background-color: #d3c5e5 !important;
-}
-.fc-toolbar-title {
-  font-size: 24px; /* Increase font size */
-  font-weight: 600; /* Make the text bold */
-  color: #000; /* Change text color */
-}
-.fc-today {
-  background-color: #735da5;
+.rbc-btn:hover {
+  background-color: #245999 !important;
 }
 
 @media (max-width: 700px) {

@@ -19,7 +19,6 @@ const CalendarSetup = () => {
       end: new Date(2024, 5, 27, 8, 0),
       allDay: false,
     },
-    // Add more events here
   ];
 
   return (
