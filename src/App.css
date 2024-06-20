@@ -141,6 +141,7 @@ body {
 }
 .first .home-cards .card {
   min-height: 15rem !important;
+  max-height: 20rem !important;
 }
 .second .home-cards .card {
   min-height: 15rem;
@@ -241,6 +242,7 @@ body {
     text-align: left;
     width: 10rem !important;
     padding: 1px !important;
+    margin-left: 4%;
   }
   .home-cards .card,
   .projects-cards .card {

@@ -2,7 +2,13 @@ import { Row, Col } from "react-bootstrap";
 import TopBar from "./TopBar";
 
 import Sidebar from "./Sidebar";
+import { useNavigate } from "react-router-dom";
+import CalendarWidget from "./CalendarWidget";
 function Home() {
+  const navigate = useNavigate();
+  const calendarPage = () => {
+    navigate("/pma/calendar");
+  };
   return (
     <>
       <Sidebar />
@@ -17,7 +23,7 @@ function Home() {
                 <h2 className="fw-bold py-0 mb-0">Hi Privilledge</h2>
                 <small className="mb-0 mt-0">Welcome to your workspace</small>
               </Col>
-              <Col md={5} className="py-4 create">
+              <Col md={5} className="py-3 create">
                 {" "}
                 <button className="btn">
                   <svg
@@ -36,7 +42,7 @@ function Home() {
                       d="M12,18 L12,6 M6,12 L18,12"
                     ></path>
                   </svg>
-                  Create project
+                  Add project
                 </button>
               </Col>
             </Row>
@@ -46,8 +52,9 @@ function Home() {
             <div className="row home-cards">
               <div className=" col-lg-5">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body" onClick={calendarPage}>
                     <h6 className="fw-bold">Your calendar</h6>
+                    <CalendarWidget />
                   </div>
                 </div>
               </div>
@@ -72,14 +79,15 @@ function Home() {
               <div className=" col-lg-4">
                 <div class="card">
                   <div class="card-body">
-                    <h6 className="fw-bold">Your calendar</h6>
+                    <h6 className="fw-bold">Reports</h6>
+                    <div className="p-1"></div>
                   </div>
                 </div>
               </div>
               <div className=" col-lg-4">
                 <div class="card">
                   <div class="card-body">
-                    <h6 className="fw-bold">Dashboards</h6>
+                    <h6 className="fw-bold">Settings</h6>
                   </div>
                 </div>
               </div>

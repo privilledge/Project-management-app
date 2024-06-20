@@ -92,6 +92,9 @@
   .links {
     margin-top: 96%;
   }
+  .side-hr {
+    display: none;
+  }
 }
 svg {
   color: #4b4b4b !important;
