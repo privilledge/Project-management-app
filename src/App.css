@@ -47,12 +47,46 @@ body {
 .signup {
   background: linear-gradient(to right, #16b9c3, #ff007f);
   border: 1px solid #16b9c3 !important;
+  animation: gradientAnimation 10s ease infinite;
   border-radius: 0.3em !important;
   color: white !important;
   font-size: 20px !important;
   font-weight: 600 !important;
   padding: 10px !important;
   width: 30%;
+}
+.modal {
+  margin-top: 1%;
+}
+.project-name-input {
+  color: #000 !important;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+.project-name-input:focus {
+  border-bottom: 1px #e8e8e8 solid;
+  outline: none;
+}
+.custom-modal-header {
+  border: none !important;
+}
+.projects-buttons {
+  display: flex;
+}
+textarea:focus {
+  outline: none;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .video-container {
@@ -123,8 +157,13 @@ body {
   text-align: right;
 }
 .create .btn {
-  background-color: #775da6;
+  background-color: #fb6542;
   padding: 6px;
+  color: #fff;
+}
+.create .btn:hover {
+  background-color: #fc937b;
+  outline: #fb6542;
   color: #fff;
 }
 .home-cards .card {
@@ -190,10 +229,12 @@ body {
 .todo-title {
   font-size: 15px;
 }
-
+.create-link {
+  text-align: right;
+}
 /* ========================================== */
 
-/* Styling the toolbar */
+/* Styling the calendar toolbar */
 .rbc-toolbar {
   /* background-color: #d3c5e5; */
   padding: 10px;
@@ -227,6 +268,9 @@ body {
 .rbc-btn:hover {
   background-color: #245999 !important;
 }
+.modal {
+  position: absolute;
+}
 
 @media (max-width: 700px) {
   .logo {
@@ -239,8 +283,9 @@ body {
     width: auto;
   }
   .create {
-    text-align: right !important;
+    text-align: left !important;
   }
+
   .projects-title {
     font-size: 17px;
   }

@@ -1,5 +1,5 @@
 .calendar-widget {
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   width: 410px; /* Adjust width as needed */
 }
 
@@ -11,7 +11,7 @@
 }
 
 .calendar-header button {
-  background-color: #3174ad;
+  background-color: #375e97;
   color: white;
   border: none;
   padding: 3px 6px;
@@ -20,7 +20,7 @@
 }
 
 .calendar-header button:hover {
-  background-color: #245999;
+  background-color: #62a2f0;
 }
 
 .calendar-days {
@@ -39,9 +39,14 @@
 .other-month {
   color: #ccc;
 }
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .calendar-widget {
     padding: 2px;
     width: fit-content; /* Adjust width as needed */
+  }
+  @media (max-width: 1000px) {
+    .calendar-widget {
+      width: fit-content; /* Adjust width as needed */
+    }
   }
 }

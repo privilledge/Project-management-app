@@ -61,7 +61,7 @@ function Projects() {
                 Projects
               </h4>
             </Col>
-            <Col md={6} xs={7} sm={6} className="create mt-1">
+            <Col md={6} xs={7} sm={6} className="create-link mt-1">
               <a href="#" className="" style={{ color: "#775da6" }}>
                 <svg
                   stroke="currentColor"
