@@ -86,7 +86,7 @@ function Projects() {
           </div>
           <Row>
             <Col md={4}>hello</Col>
-            <Col md={4}>hiee</Col>
+            <Col md={4}>hieeb</Col>
           </Row>
           <div className="projects-cards mt-5">
             {projectChunks.map((chunk, chunkIndex) => (
