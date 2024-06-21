@@ -3,11 +3,17 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 
 function Reports() {
+  const myDate = () => {
+    console.log(new Date());
+  };
   return (
     <>
       <Sidebar />
-      <div className="main-container">
+      <div className="main-content">
         <TopBar />
+        <div>
+          <button onClick={myDate}>Hey</button>
+        </div>
       </div>
     </>
   );

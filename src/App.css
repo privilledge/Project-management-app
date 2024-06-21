@@ -239,10 +239,8 @@ body {
     width: auto;
   }
   .create {
-    text-align: left;
+    text-align: right !important;
     width: 10rem !important;
-    padding: 1px !important;
-    margin-left: 4%;
   }
   .home-cards .card,
   .projects-cards .card {

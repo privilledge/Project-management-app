@@ -53,12 +53,12 @@ function Projects() {
           }}
         >
           <div className="row top">
-            <div className="col-lg-6 col-md-6 tabs mt-2">
+            <div className="col-lg-6 col-md-6 col-sm-6  mt-2">
               <h4 className="fw-bold" style={{ textDecoration: "underline" }}>
                 Projects
               </h4>
             </div>
-            <div className="create col-lg-6 col-md-6 mt-0">
+            <div className="create col-lg-6 col-md-6 col-sm-6 mt-1">
               <a href="#" className="" style={{ color: "#775da6" }}>
                 <svg
                   stroke="currentColor"
