@@ -52,7 +52,7 @@ function Projects() {
             minHeight: "35rem",
           }}
         >
-          <div className="row top">
+          <div className="row ">
             <div className="col-lg-6 col-md-6 col-sm-6  mt-2">
               <h4 className="fw-bold" style={{ textDecoration: "underline" }}>
                 Projects
@@ -80,6 +80,14 @@ function Projects() {
               </a>
             </div>
           </div>
+          <div className="row" style={{ display: "flex" }}>
+            <div className="col-sm-6">helllo</div>
+            <div className="col-sm-6">hiiee</div>
+          </div>
+          <Row>
+            <Col md={4}>hello</Col>
+            <Col md={4}>hiee</Col>
+          </Row>
           <div className="projects-cards mt-5">
             {projectChunks.map((chunk, chunkIndex) => (
               <Row key={chunkIndex}>
