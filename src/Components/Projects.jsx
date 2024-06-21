@@ -52,13 +52,16 @@ function Projects() {
             minHeight: "35rem",
           }}
         >
-          <div className="row ">
-            <div className="col-lg-6 col-md-6 col-sm-6  mt-2">
-              <h4 className="fw-bold" style={{ textDecoration: "underline" }}>
+          <div className="row">
+            <Col md={6} xs={5} sm={6} className="mt-2">
+              <h4
+                className="fw-bold projects-title"
+                style={{ textDecoration: "underline" }}
+              >
                 Projects
               </h4>
-            </div>
-            <div className="create col-lg-6 col-md-6 col-sm-6 mt-1">
+            </Col>
+            <Col md={6} xs={7} sm={6} className="create mt-1">
               <a href="#" className="" style={{ color: "#775da6" }}>
                 <svg
                   stroke="currentColor"
@@ -76,18 +79,11 @@ function Projects() {
                     d="M12,18 L12,6 M6,12 L18,12"
                   ></path>
                 </svg>
-                Create project
+                Add project
               </a>
-            </div>
+            </Col>
           </div>
-          <div className="row" style={{ display: "flex" }}>
-            <div className="col-sm-6">helllo</div>
-            <div className="col-sm-6">hiiee</div>
-          </div>
-          <Row>
-            <Col md={4}>hello</Col>
-            <Col md={4}>hieeb</Col>
-          </Row>
+
           <div className="projects-cards mt-5">
             {projectChunks.map((chunk, chunkIndex) => (
               <Row key={chunkIndex}>

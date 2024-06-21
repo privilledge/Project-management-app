@@ -240,7 +240,9 @@ body {
   }
   .create {
     text-align: right !important;
-    width: 10rem !important;
+  }
+  .projects-title {
+    font-size: 17px;
   }
   .home-cards .card,
   .projects-cards .card {
