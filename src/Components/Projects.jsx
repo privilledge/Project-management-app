@@ -1,9 +1,14 @@
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Row, Col } from "react-bootstrap";
-// Function to shuffle an array
+import CreateProjectModal from "./CreateProjectModal";
 
 function Projects() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleHideModal = () => setShowModal(false);
   const projects = [
     {
       id: 1,
@@ -62,7 +67,12 @@ function Projects() {
               </h4>
             </Col>
             <Col md={6} xs={7} sm={6} className="create-link mt-1">
-              <a href="#" className="" style={{ color: "#775da6" }}>
+              <a
+                href="#"
+                className=""
+                style={{ color: "#f5a623" }}
+                onClick={handleShowModal}
+              >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
@@ -74,7 +84,7 @@ function Projects() {
                 >
                   <path
                     fill="none"
-                    stroke="#775da6"
+                    stroke="#f5a623"
                     strokeWidth="2"
                     d="M12,18 L12,6 M6,12 L18,12"
                   ></path>
@@ -83,6 +93,7 @@ function Projects() {
               </a>
             </Col>
           </div>
+          <CreateProjectModal show={showModal} handleClose={handleHideModal} />
 
           <div className="projects-cards mt-5">
             {projectChunks.map((chunk, chunkIndex) => (

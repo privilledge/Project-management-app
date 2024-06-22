@@ -1,7 +1,7 @@
 function Searchbar() {
   return (
     <>
-      <div className="search d-flex ml-5 mt-2">
+      <div className="search d-flex ml-5 mt-1">
         <input type="text" className="searchbar" placeholder="Search tasks" />
         <button className="search-button btn ml-1">
           <svg

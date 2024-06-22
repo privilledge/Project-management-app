@@ -56,7 +56,7 @@ body {
   width: 30%;
 }
 .modal {
-  margin-top: 1%;
+  margin-top: 0%;
 }
 .project-name-input {
   color: #000 !important;
@@ -71,11 +71,22 @@ body {
 .custom-modal-header {
   border: none !important;
 }
-.projects-buttons {
-  display: flex;
+.projects-buttons input {
+  width: 170px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  text-align: center;
 }
+.projects-buttons input:focus {
+  border: none;
+  outline: 1px solid #3174ad;
+}
+
 textarea:focus {
-  outline: none;
+  outline: none !important;
+}
+.custom-dropdown-toggle::after {
+  display: none !important;
 }
 @keyframes gradientAnimation {
   0% {
@@ -157,13 +168,13 @@ textarea:focus {
   text-align: right;
 }
 .create .btn {
-  background-color: #fb6542;
+  background-color: #6f42c1;
   padding: 6px;
   color: #fff;
 }
 .create .btn:hover {
-  background-color: #fc937b;
-  outline: #fb6542;
+  background-color: #9760fd;
+  outline: #6f42c1;
   color: #fff;
 }
 .home-cards .card {
@@ -295,5 +306,15 @@ textarea:focus {
   }
   .tasks-container {
     margin: 0%;
+  }
+  .projects-buttons input {
+    width: 90px !important;
+    padding: 0;
+
+    border: 1px solid #e8e8e8;
+  }
+  .status-dropdown {
+    width: fit-content !important;
+    padding: 0;
   }
 }
