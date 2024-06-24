@@ -27,7 +27,7 @@ body {
 .nav-link,
 .buttons {
   border: 1px solid #16b9c3 !important;
-  width: 7em;
+  width: 6em;
   height: 2em;
   font-size: 18px !important;
   border-radius: 0.1em;
@@ -168,13 +168,13 @@ textarea:focus {
   text-align: right;
 }
 .create .btn {
-  background-color: #6f42c1;
-  padding: 6px;
+  background-color: #0dcaf0;
+  padding: 4px;
   color: #fff;
 }
 .create .btn:hover {
-  background-color: #9760fd;
-  outline: #6f42c1;
+  background-color: #fe9496;
+  outline: #0dcaf0;
   color: #fff;
 }
 .home-cards .card {
@@ -295,6 +295,7 @@ textarea:focus {
   }
   .create {
     text-align: left !important;
+    margin-left: 2%;
   }
 
   .projects-title {

@@ -23,7 +23,7 @@ function LandingPage() {
           </a>
 
           <button className="nav-link btn btn-primary" onClick={homePage}>
-            Log in
+            Demo
           </button>
         </nav>
         <div className="container-fluid px-0">
@@ -204,9 +204,9 @@ function LandingPage() {
                       <div className="p-3 bg-light">
                         <h5 className="fw-bold">Boards</h5>
                         <p>
-                          Trello boards keep tasks organized and work moving
-                          forward. In a glance, see everything from “things to
-                          do” to “aww yeah, we did it!”
+                          myWorkSpace boards keep tasks organized and work
+                          moving forward. In a glance, see everything from
+                          “things to do” to “aww yeah, we did it!”
                         </p>
                         <button className="btn  btn-outline-info">
                           Sign up

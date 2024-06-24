@@ -30,22 +30,6 @@ function Home() {
               <Col md={5} className="py-3 create">
                 {" "}
                 <button onClick={handleShowModal} className="btn">
-                  <svg
-                    stroke="currentColor"
-                    fill="currentColor"
-                    strokeWidth="0"
-                    viewBox="0 0 24 24"
-                    height="1.3em"
-                    width="1.3em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="none"
-                      stroke="#fff"
-                      strokeWidth="2"
-                      d="M12,18 L12,6 M6,12 L18,12"
-                    ></path>
-                  </svg>
                   Add project
                 </button>
               </Col>

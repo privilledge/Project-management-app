@@ -9,7 +9,7 @@ function Sidebar() {
           <ul className="side-logo ">
             <svg
               stroke="currentColor"
-              fill="#6f42c1"
+              fill="#000"
               strokeWidth="0"
               viewBox="0 0 512 512"
               height="1.5em"

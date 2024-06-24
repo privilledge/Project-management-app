@@ -41,7 +41,7 @@
 }
 @media (max-width: 500px) {
   .calendar-widget {
-    padding: 2px;
+    padding: 2px 5px;
     width: fit-content; /* Adjust width as needed */
   }
   @media (max-width: 1000px) {
