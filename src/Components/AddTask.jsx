@@ -9,7 +9,6 @@ const AddTask = ({ show, handleClose }) => {
   });
 
   const addTask = async (e) => {
-    e.preventDefault();
     try {
       const response = await fetch("http://localhost:9090/tasks/addTask", {
         method: "POST",
@@ -21,6 +20,7 @@ const AddTask = ({ show, handleClose }) => {
       }
     } catch (error) {
       console.log("Failed to add task");
+      e.preventDefault();
     }
   };
 

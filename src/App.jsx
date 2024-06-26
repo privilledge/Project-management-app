@@ -10,6 +10,7 @@ import Tasks from "./Components/Tasks";
 import Sidebar from "./Components/Sidebar";
 import Calendar from "./Components/Calendar";
 import Reports from "./Components/Reports";
+import ViewProject from "./Components/ViewProject";
 
 function App() {
   return (
@@ -18,12 +19,12 @@ function App() {
         <div className="app">
           <Routes>
             <Route path="/pma" element={<LandingPage />} />
-
             <Route path="/pma/home" element={<Home />} />
             <Route path="/pma/projects" element={<Projects />} />
             <Route path="/pma/tasks" element={<Tasks />} />
             <Route path="/pma/calendar" element={<Calendar />}></Route>
             <Route path="/pma/reports" element={<Reports />}></Route>
+            <Route path="/pma/viewProject/:id" element={<ViewProject />} />
           </Routes>
         </div>
       </BrowserRouter>

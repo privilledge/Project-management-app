@@ -3,8 +3,10 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Row, Col } from "react-bootstrap";
 import CreateProjectModal from "./CreateProjectModal";
+import { useNavigate } from "react-router";
 
 function Projects() {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -31,6 +33,9 @@ function Projects() {
   for (let i = 0; i < projects.length; i += 3) {
     projectChunks.push(projects.slice(i, i + 3));
   }
+  const handleViewProject = (id) => {
+    navigate(`/pma/viewProject/${id}`);
+  };
   return (
     <>
       <Sidebar />
@@ -39,25 +44,30 @@ function Projects() {
         <div
           className=" card m-3 p-4"
           style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "",
             borderRadius: "7px",
+            border: "none",
             minHeight: "35rem",
           }}
         >
-          <div className="row">
+          <div
+            className="row"
+            style={{ marginLeft: "0px", marginRight: "0px" }}
+          >
             <Col md={6} xs={5} sm={6} className="mt-2">
-              <h4
-                className="fw-bold projects-title"
-                style={{ textDecoration: "underline" }}
-              >
-                Projects
-              </h4>
+              <h5 className="fw-bold projects-title mt-1" style={{}}>
+                All Projects
+              </h5>
             </Col>
             <Col md={6} xs={7} sm={6} className="create-link mt-1">
               <a
                 href="#"
-                className=""
-                style={{ color: "#ff0854" }}
+                className="btn"
+                style={{
+                  backgroundColor: "#ff0854",
+                  border: "1px solid red",
+                  color: "#fff",
+                }}
                 onClick={handleShowModal}
               >
                 <svg
@@ -71,63 +81,99 @@ function Projects() {
                 >
                   <path
                     fill="none"
-                    stroke="#ff0854"
+                    stroke="#fff"
                     strokeWidth="2"
                     d="M12,18 L12,6 M6,12 L18,12"
                   ></path>
                 </svg>
-                Add project
               </a>
             </Col>
           </div>
           <CreateProjectModal show={showModal} handleClose={handleHideModal} />
+          {projects.length > 0 ? (
+            <div className="projects-cards mt-2">
+              {projectChunks.map((chunk, chunkIndex) => (
+                <Row key={chunkIndex}>
+                  {chunk.map((project) => (
+                    <Col md={4} key={project.id}>
+                      <div
+                        className={`card ${project.status} p-0 mb-1`}
+                        onClick={() => handleViewProject(project.id)}
+                      >
+                        <div className="card-body">
+                          {" "}
+                          <div className="row d-flex">
+                            <div className="col-7">
+                              {" "}
+                              <h4
+                                className="fw-bold mt-1"
+                                style={{ fontSize: "15px" }}
+                              >
+                                {project.projectName}
+                              </h4>
+                            </div>
 
-          <div className="projects-cards mt-5">
-            {projectChunks.map((chunk, chunkIndex) => (
-              <Row key={chunkIndex}>
-                {chunk.map((project) => (
-                  <Col md={4}>
-                    <div className={`card ${project.status} p-1 mb-1`}>
-                      <div className="card-body">
-                        {" "}
-                        <div className="row d-flex">
-                          <div className="col-7">
-                            {" "}
-                            <h4
-                              className="fw-bold mt-1"
-                              style={{ fontSize: "16px" }}
-                            >
-                              {project.projectName}
-                            </h4>
+                            <div className="status-btn col-5 mb-1">
+                              <button
+                                className="status"
+                                style={{
+                                  width: "fit-content",
+                                  fontSize: "small",
+                                }}
+                              >
+                                {project.status}
+                              </button>
+                            </div>
                           </div>
+                          <div className="description">
+                            <p style={{ fontSize: "14px" }}>
+                              {project.summary}
+                            </p>
+                          </div>
+                          <div className="dates">
+                            <h6 style={{ fontSize: "14px" }}>
+                              Added date:{" "}
+                              <span
+                                style={{ fontSize: "14px", fontWeight: "300" }}
+                              >
+                                {project.addedDate}
+                              </span>
+                            </h6>
 
-                          <div className="status-btn col-5 mb-1">
-                            <button
-                              className="status"
-                              style={{ width: "fit-content" }}
-                            >
-                              {project.status}
-                            </button>
+                            <h6 style={{ fontSize: "14px" }}>
+                              Due date:
+                              <span
+                                style={{ fontSize: "14px", fontWeight: "300" }}
+                              >
+                                {project.dueDate}
+                              </span>
+                            </h6>
                           </div>
-                        </div>
-                        <div className="description">
-                          <p>{project.summary}</p>
-                        </div>
-                        <div className="dates">
-                          <h6 style={{ fontSize: "14px" }}>
-                            Added date:{project.addedDate}
-                          </h6>
-                          <h6 style={{ fontSize: "14px" }}>
-                            Due date:{project.dueDate}
-                          </h6>
+                          <div className="mt-4">
+                            <h6 style={{ fontSize: "14px" }}>Progress : 75%</h6>
+                            <div className="progress card-progress ">
+                              <div className="progress-bar  w-75"></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            ))}
-          </div>
+                    </Col>
+                  ))}
+                </Row>
+              ))}
+            </div>
+          ) : (
+            <h5
+              style={{
+                textAlign: "center",
+                marginTop: "150px",
+                color: "GrayText",
+                fontSize: "16px",
+              }}
+            >
+              No projects...
+            </h5>
+          )}
         </div>
       </div>
     </>

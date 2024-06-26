@@ -1,54 +1,50 @@
+import { Modal } from "react-bootstrap";
 import { useRef, useState } from "react";
-import { Modal, Button, Col } from "react-bootstrap";
-import { useNavigate } from "react-router";
-function CreateProjectModal({ show, handleClose }) {
+import { Col } from "react-bootstrap";
+import { useParams } from "react-router";
+function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
   const ref = useRef();
   const ref2 = useRef();
-  const navigate = useNavigate;
-  const [selectedValue, setSelectedValue] = useState("Status");
-  const [data, setData] = useState({
-    projectName: "",
-    status: "",
-    description: "",
-    summary: "",
-    addedDate: "",
-    dueDate: "",
-  });
+  const [selectedValue, setSelectedValue] = useState(projectData.status);
+  const handleStatus = (selected) => {
+    setSelectedValue(selected);
+  };
+  const [data, setData] = useState(projectData);
+  const { id } = useParams();
 
-  const handleSelectedValue = (value) => setSelectedValue(value);
-
-  const handleSubmit = async (e) => {
+  const updateProject = async (e) => {
     try {
       const response = await fetch(
-        "http://localhost:9090/projects/addProject",
+        `http://localhost:9090/projects/editProject/${id}`,
         {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(data),
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(projectData),
         }
       );
       if (response.ok) {
-        console.log("Added project");
+        console.log("Updated project");
       }
-      navigate("/pma/projects");
     } catch (error) {
-      console.log("Failed to add project");
+      console.log("Failed to update project");
+      e.preventDefault();
     }
   };
-
-  const handleOnchange = (event) => {
-    const { name, value } = event.target;
-
-    setData((prevData) => ({ ...prevData, [name]: value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProjectData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   return (
     <>
       <Modal show={show} className="modal " onHide={handleClose} size="lg">
-        <form action="" className="form" onSubmit={handleSubmit}>
+        <form action="" className="form" onSubmit={updateProject}>
           <div className="container">
             <Modal.Header closeButton className="custom-modal-header p-3">
               <Modal.Title>
-                <h6>New project</h6>
+                <h6>Edit project</h6>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -59,8 +55,8 @@ function CreateProjectModal({ show, handleClose }) {
                 placeholder="Project name"
                 style={{ fontSize: "18px", color: "#000" }}
                 className="fw-bold project-name-input m-1"
-                value={data.projectName}
-                onChange={handleOnchange}
+                value={projectData.projectName}
+                onChange={handleChange}
                 required
               />
               <br />
@@ -69,10 +65,10 @@ function CreateProjectModal({ show, handleClose }) {
                 name="summary"
                 id=""
                 placeholder="Add a short summary"
-                style={{ fontSize: "15px", fontWeight: "600" }}
+                style={{ fontSize: "14px", fontWeight: "500" }}
                 className=" project-name-input m-1"
-                value={data.summary}
-                onChange={handleOnchange}
+                value={projectData.summary}
+                onChange={handleChange}
                 required
               />
 
@@ -87,9 +83,8 @@ function CreateProjectModal({ show, handleClose }) {
                     ref={ref}
                     onFocus={() => (ref.current.type = "date")}
                     onBlur={() => (ref.current.type = "text")}
-                    value={data.addedDate}
-                    onChange={handleOnchange}
                     required
+                    value={projectData.addedDate}
                   />
                 </Col>
 
@@ -101,10 +96,9 @@ function CreateProjectModal({ show, handleClose }) {
                     id=""
                     placeholder="Due date"
                     ref={ref2}
-                    value={data.dueDate}
-                    onChange={handleOnchange}
                     onFocus={() => (ref2.current.type = "date")}
                     onBlur={() => (ref2.current.type = "text")}
+                    value={projectData.dueDate}
                     required
                   />
                 </Col>
@@ -125,28 +119,19 @@ function CreateProjectModal({ show, handleClose }) {
                     <ul className="dropdown-menu">
                       <li
                         className="dropdown-item"
-                        onClick={() => {
-                          handleSelectedValue("Not-started");
-                          data.status = "Not-started";
-                        }}
+                        onClick={() => handleStatus("Not started")}
                       >
                         Not started
                       </li>
                       <li
                         className="dropdown-item"
-                        onClick={() => {
-                          handleSelectedValue("In-progress");
-                          data.status = "In-progress";
-                        }}
+                        onClick={() => handleStatus("In-progress")}
                       >
                         In-progress
                       </li>
                       <li
                         className="dropdown-item"
-                        onClick={() => {
-                          handleSelectedValue("Completed");
-                          data.status = "Completed";
-                        }}
+                        onClick={() => handleStatus("Completed")}
                       >
                         Completed
                       </li>
@@ -162,8 +147,7 @@ function CreateProjectModal({ show, handleClose }) {
                 rows="10"
                 placeholder=" Write a description,a project brief or collect ideas..."
                 style={{ border: "none", width: "100%" }}
-                value={data.description}
-                onChange={handleOnchange}
+                value={projectData.description}
               />
 
               <hr />
@@ -187,7 +171,7 @@ function CreateProjectModal({ show, handleClose }) {
                   }}
                   type="submit"
                 >
-                  Add Project
+                  Update Project
                 </button>
               </div>
             </Modal.Body>
@@ -197,4 +181,4 @@ function CreateProjectModal({ show, handleClose }) {
     </>
   );
 }
-export default CreateProjectModal;
+export default EditProjectModal;
