@@ -71,7 +71,7 @@ function Home() {
               <div className=" col-lg-4">
                 <div className="card mb-1">
                   <div className="card-body">
-                    <h6 className="fw-bold">Reports</h6>
+                    <h6 className="fw-bold">Total projects</h6>
                     <div className="p-1"></div>
                   </div>
                 </div>
@@ -79,7 +79,7 @@ function Home() {
               <div className=" col-lg-4">
                 <div className="card mb-1">
                   <div className="card-body">
-                    <h6 className="fw-bold">Settings</h6>
+                    <h6 className="fw-bold">Reports</h6>
                   </div>
                 </div>
               </div>

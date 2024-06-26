@@ -30,15 +30,17 @@ function LandingPage() {
           <div className="bg">
             <div className="container ">
               <div className="content text-center py-4">
-                <h1 className="display-4">
-                  Project management
-                  <br /> made personal
-                </h1>
-                <br />
-                <h5 className="lead">
-                  Experience comprehensive task management <br />
-                  with a personnal touch.
-                </h5>
+                <div className="fade-in">
+                  <h1 className="display-4">
+                    Project management
+                    <br /> made personal
+                  </h1>
+                  <br />
+                  <h5 className="lead">
+                    Experience comprehensive task management <br />
+                    with a personnal touch.
+                  </h5>
+                </div>
 
                 <button className="signup btn-lg btn mt-3">
                   Get myWorkSpace free
@@ -108,7 +110,7 @@ function LandingPage() {
                     </button>
                   </div>
                 </div>
-                <div className="col-10 col-sm-8 col-lg-6">
+                <div className="col-10 sShot text-center col-sm-8 col-lg-6">
                   <img
                     src={placeHolder}
                     className="d-block mx-lg-auto img-fluid"

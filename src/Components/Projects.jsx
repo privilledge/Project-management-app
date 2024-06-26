@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Row, Col } from "react-bootstrap";
@@ -9,41 +9,28 @@ function Projects() {
 
   const handleShowModal = () => setShowModal(true);
   const handleHideModal = () => setShowModal(false);
-  const projects = [
-    {
-      id: 1,
-      projectName: "Ecommerce website",
-      description:
-        "This is the project description. It is a short summary of what the projects is about",
-      addedDate: "06/02/2024",
-      dueDate: "01/05/2024",
-      status: "not-started",
-    },
-    {
-      id: 2,
-      projectName: "Landing page",
-      description:
-        "This is the project description. It is a short summary of what the projects is about",
-      addedDate: "16/04/2024",
-      dueDate: "04/07/2024",
-      status: "done",
-    },
-    {
-      id: 3,
-      projectName: "Project management android app",
-      description:
-        "This is the project description. It is a short summary of what the projects is about",
-      addedDate: "16/07/2024",
-      dueDate: "04/09/2024",
-      status: "in-progress",
-    },
-  ];
+  const [projects, setProjects] = useState({});
+
   // Split the projects array into chunks of 3
+
+  useEffect(() => {
+    const getProjects = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:9090/projects/getProjects"
+        );
+        const result = await response.json();
+        setProjects(result);
+      } catch (error) {
+        console.log("Failed to fetch");
+      }
+    };
+    getProjects();
+  }, []);
   const projectChunks = [];
   for (let i = 0; i < projects.length; i += 3) {
     projectChunks.push(projects.slice(i, i + 3));
   }
-
   return (
     <>
       <Sidebar />
@@ -70,7 +57,7 @@ function Projects() {
               <a
                 href="#"
                 className=""
-                style={{ color: "#f5a623" }}
+                style={{ color: "#ff0854" }}
                 onClick={handleShowModal}
               >
                 <svg
@@ -84,7 +71,7 @@ function Projects() {
                 >
                   <path
                     fill="none"
-                    stroke="#f5a623"
+                    stroke="#ff0854"
                     strokeWidth="2"
                     d="M12,18 L12,6 M6,12 L18,12"
                   ></path>
@@ -106,12 +93,12 @@ function Projects() {
                         <div className="row d-flex">
                           <div className="col-7">
                             {" "}
-                            <h6
-                              className="fw-bold"
-                              style={{ fontSize: "14px" }}
+                            <h4
+                              className="fw-bold mt-1"
+                              style={{ fontSize: "16px" }}
                             >
                               {project.projectName}
-                            </h6>
+                            </h4>
                           </div>
 
                           <div className="status-btn col-5 mb-1">
@@ -124,7 +111,7 @@ function Projects() {
                           </div>
                         </div>
                         <div className="description">
-                          <p>{project.description}</p>
+                          <p>{project.summary}</p>
                         </div>
                         <div className="dates">
                           <h6 style={{ fontSize: "14px" }}>

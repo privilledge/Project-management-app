@@ -43,6 +43,18 @@ body {
   font-weight: 900;
   color: #212121;
 }
+.fade-in {
+  animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0.4;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .signup {
   background: linear-gradient(to right, #16b9c3, #ff007f);
@@ -168,13 +180,13 @@ textarea:focus {
   text-align: right;
 }
 .create .btn {
-  background-color: #0dcaf0;
+  background-color: #ff0854;
   padding: 4px;
   color: #fff;
 }
 .create .btn:hover {
   background-color: #fe9496;
-  outline: #0dcaf0;
+  outline: #ff0854;
   color: #fff;
 }
 .home-cards .card {
@@ -197,17 +209,21 @@ textarea:focus {
   min-height: 15rem;
 }
 .projects-cards .card {
-  min-height: 6rem;
+  min-height: 13.5rem !important;
+  cursor: pointer;
 }
-.projects-cards .done {
+.projects-cards .card:hover {
+  transform: scale(1.02);
+}
+.projects-cards .Completed {
   background-color: #e4ffeb;
   border: 1px solid #e4ffeb;
 }
-.projects-cards .not-started {
+.projects-cards .Not-started {
   background-color: #fff4e9;
   border: 1px solid #fff4e9;
 }
-.projects-cards .in-progress {
+.projects-cards .In-progress {
   background-color: #f5edff;
   border: 1px solid #f5edff;
 }
@@ -219,19 +235,22 @@ textarea:focus {
   background-color: transparent;
   color: inherit;
   border-radius: 8px;
-  border: 1px solid #ffffff;
+  border: 1px solid #0dcaf0;
   font-size: 14px;
 }
 
 .tasks-container {
   margin: 3%;
-  padding-bottom: 1%;
 }
 .todo-item,
 .completed-item {
   background: #ffffff;
   border-radius: 5px;
   cursor: pointer;
+}
+.todo-item:hover,
+.completed-item:hover {
+  background-color: #f7edf1;
 }
 .star-task {
   text-align: right;
@@ -242,6 +261,25 @@ textarea:focus {
 }
 .create-link {
   text-align: right;
+}
+.tasks-top {
+  display: flex;
+  justify-content: space-between;
+}
+.add-task-btn {
+  background-color: #ff0854 !important;
+  padding: 0.3rem 1rem 0.3rem 1rem !important;
+  height: 2rem;
+  color: #fff !important;
+}
+.input-task {
+  border: none;
+  border-bottom: 1px dashed rgb(40, 219, 255) !important;
+  width: 100%;
+  padding: 1%;
+}
+.input-task:focus {
+  outline: none;
 }
 /* ========================================== */
 
@@ -306,7 +344,7 @@ textarea:focus {
     margin: 3px;
   }
   .tasks-container {
-    margin: 0%;
+    margin: 0.2rem;
   }
   .projects-buttons input {
     width: 90px !important;
@@ -317,5 +355,8 @@ textarea:focus {
   .status-dropdown {
     width: fit-content !important;
     padding: 0;
+  }
+  .sShot {
+    text-align: center !important;
   }
 }
