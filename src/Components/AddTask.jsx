@@ -9,6 +9,7 @@ const AddTask = ({ show, handleClose }) => {
   });
 
   const addTask = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch("http://localhost:9090/tasks/addTask", {
         method: "POST",
@@ -17,14 +18,16 @@ const AddTask = ({ show, handleClose }) => {
       });
       if (response.ok) {
         console.log("Task added");
+        handleClose(); // Close the modal only if the task is successfully added
+      } else {
+        console.log("Failed to add task");
       }
     } catch (error) {
-      console.log("Failed to add task");
-      e.preventDefault();
+      console.log("Failed to add task", error);
     }
   };
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -32,7 +35,7 @@ const AddTask = ({ show, handleClose }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} size="md">
-        <form action="" onSubmit={addTask}>
+        <form onSubmit={addTask}>
           <Modal.Header closeButton>
             <h6 className="fw-bold">Add new task</h6>
           </Modal.Header>
@@ -55,11 +58,11 @@ const AddTask = ({ show, handleClose }) => {
                 <span>
                   {" "}
                   <button
-                    className="dropdown-toggle  custom-dropdown-toggle m-1"
+                    className="dropdown-toggle custom-dropdown-toggle m-1"
                     data-bs-toggle="dropdown"
                     style={{
                       border: "1px solid whitesmoke",
-                      padding: " 0.5%",
+                      padding: "0.5%",
                       backgroundColor: "transparent",
                     }}
                   >
@@ -68,22 +71,22 @@ const AddTask = ({ show, handleClose }) => {
                       <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        strokeWidth="0"
                         viewBox="0 0 20 20"
                         height="1.3em"
                         width="1.3em"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         ></path>
                       </svg>
                     </span>
                   </button>
                   <ul className="dropdown-menu">
-                    <li className="dropdown-item">Project 1</li>
+                    <li className="dropdown-item">Project </li>
                   </ul>
                 </span>
               </Col>
@@ -111,7 +114,11 @@ const AddTask = ({ show, handleClose }) => {
           </Modal.Body>
           <Modal.Footer>
             <div className="">
-              <button className="btn btn-secondary m-1" onClick={handleClose}>
+              <button
+                className="btn btn-secondary m-1"
+                onClick={handleClose}
+                type="button"
+              >
                 Cancel
               </button>
               <button
@@ -128,4 +135,5 @@ const AddTask = ({ show, handleClose }) => {
     </>
   );
 };
+
 export default AddTask;
