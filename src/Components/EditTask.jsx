@@ -1,39 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Col } from "react-bootstrap";
-
-const AddTask = ({ show, handleClose }) => {
-  const [taskData, setTaskData] = useState({
-    taskName: "",
-    taskType: "ordinary",
-    status: "to-do",
-  });
-
-  const addTask = async (e) => {
-    try {
-      const response = await fetch("http://localhost:9090/tasks/addTask", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(taskData),
-      });
-      if (response.ok) {
-        console.log("Task added");
-      }
-    } catch (error) {
-      console.log("Failed to add task");
-      e.preventDefault();
-    }
-  };
-
-  const handleChange = async (e) => {
-    const { name, value } = e.target;
-    setTaskData((prevData) => ({ ...prevData, [name]: value }));
-  };
+import { useParams } from "react-router";
+function EditTask({ handleClose, show }) {
+  const { id } = useParams();
 
   return (
     <>
       <Modal show={show} onHide={handleClose} size="md">
-        <form action="" onSubmit={addTask}>
-          <Modal.Header closeButton>
+        <form action="">
+          <Modal.Header closeButton onHide={handleClose}>
             <h6 className="fw-bold">Add new task</h6>
           </Modal.Header>
           <Modal.Body className="m-2">
@@ -43,8 +18,8 @@ const AddTask = ({ show, handleClose }) => {
               placeholder="Task name..."
               className="input-task"
               name="taskName"
-              value={taskData.taskName}
-              onChange={handleChange}
+              //   value={tasks.taskName}
+              // onChange={handleChange}
             />
             <br />
             <div className="dropdown m-1 row">
@@ -68,16 +43,16 @@ const AddTask = ({ show, handleClose }) => {
                       <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        strokeWidth="0"
                         viewBox="0 0 20 20"
                         height="1.3em"
                         width="1.3em"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         ></path>
                       </svg>
                     </span>
@@ -127,5 +102,5 @@ const AddTask = ({ show, handleClose }) => {
       </Modal>
     </>
   );
-};
-export default AddTask;
+}
+export default EditTask;

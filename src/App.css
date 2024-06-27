@@ -285,15 +285,21 @@ textarea:focus {
 }
 .input-task {
   border: none;
-  border-bottom: 1px dashed rgb(40, 219, 255) !important;
+  border-bottom: solid 1px #f2f1f1;
+  margin-left: 2%;
   width: 100%;
   padding: 1%;
 }
 .input-task:focus {
   outline: none;
+  border-bottom: solid 1px #ccc;
 }
 .btns:hover {
   outline: none;
+}
+.task-card {
+  width: 70%;
+  left: 12%;
 }
 /* ========================================== */
 
@@ -378,5 +384,9 @@ textarea:focus {
   }
   .project-card .card {
     margin: 0 !important;
+  }
+  .task-card {
+    width: auto;
+    left: auto;
   }
 }

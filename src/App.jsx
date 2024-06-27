@@ -11,6 +11,7 @@ import Sidebar from "./Components/Sidebar";
 import Calendar from "./Components/Calendar";
 import Reports from "./Components/Reports";
 import ViewProject from "./Components/ViewProject";
+import ViewTask from "./Components/ViewTask";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/pma/calendar" element={<Calendar />}></Route>
             <Route path="/pma/reports" element={<Reports />}></Route>
             <Route path="/pma/viewProject/:id" element={<ViewProject />} />
+            <Route path="/pma/viewTask/:id" element={<ViewTask />} />
           </Routes>
         </div>
       </BrowserRouter>

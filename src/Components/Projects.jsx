@@ -13,6 +13,7 @@ function Projects() {
   const handleHideModal = () => setShowModal(false);
   const [projects, setProjects] = useState({});
 
+  const placeholderProjects = [{}];
   // Split the projects array into chunks of 3
 
   useEffect(() => {

@@ -3,8 +3,10 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Link, useParams } from "react-router-dom";
 import EditProjectModal from "./EditProjectModal";
+import { useNavigate } from "react-router-dom";
 
 const ViewProject = () => {
+  const navigate = useNavigate();
   const [projectData, setProjectData] = useState({
     projectName: "",
     summary: "",
@@ -39,6 +41,23 @@ const ViewProject = () => {
   };
   const handleClose = () => {
     setEditModal(false);
+  };
+  const deleteProject = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `http://localhost:9090/projects/delete/${id}`,
+        { method: "DELETE" }
+      );
+
+      if (response.ok) {
+        navigate("/pma/projects");
+        console.log("Deleted");
+      }
+    } catch (error) {
+      console.log("Failed to delete");
+    }
   };
 
   return (
@@ -87,7 +106,10 @@ const ViewProject = () => {
                       <path d="M5,21h14c1.103,0,2-0.897,2-2v-8.668l-2,2V19H8.158c-0.026,0-0.053,0.01-0.079,0.01c-0.033,0-0.066-0.009-0.1-0.01H5V5	h6.847l2-2H5C3.897,3,3,3.897,3,5v14C3,20.103,3.897,21,5,21z"></path>
                     </svg>
                   </button>
-                  <button className="btn btn-info p-2">
+                  <button
+                    className="btn btn-info p-2 deleteProject"
+                    onClick={deleteProject}
+                  >
                     <svg
                       stroke="currentColor"
                       fill="#fff"
@@ -145,11 +167,7 @@ const ViewProject = () => {
                     Notes:
                   </p>
                   <hr style={{ color: "red" }} />
-                  <ul style={{ color: "GrayText" }}>
-                    <li>notes</li>
-                    <li>notes</li>
-                    <li>notes</li>
-                  </ul>
+                  <p>Notes here</p>
                 </div>
                 <p className="" style={{ fontWeight: "600" }}>
                   Progress

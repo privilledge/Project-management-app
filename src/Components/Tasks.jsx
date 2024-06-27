@@ -3,10 +3,13 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Col } from "react-bootstrap";
 import AddTask from "./AddTask";
+import EditTask from "./EditTask";
+import { useNavigate } from "react-router";
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const handleClose = () => {
     setShowModal(false);
   };
@@ -30,6 +33,9 @@ function Tasks() {
     getTasks();
   }, []);
 
+  const viewTask = (id) => {
+    navigate(`/pma/viewTask/${id}`);
+  };
   const tasksTodo = tasks.filter((task) => task.status == "to-do");
   const completedTasks = tasks.filter((task) => task.status == "completed");
   return (
@@ -50,7 +56,11 @@ function Tasks() {
           </div>
           <div className="todo-list">
             {tasksTodo.map((task) => (
-              <div className="todo-item p-3 mb-1" key={task.id}>
+              <div
+                className="todo-item p-3 mb-1"
+                key={task.id}
+                onClick={() => viewTask(task.id)}
+              >
                 <div className="row">
                   <div className="col-10">
                     <input type="radio" name="" id="" />
