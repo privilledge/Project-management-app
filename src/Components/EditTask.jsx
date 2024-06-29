@@ -1,8 +1,31 @@
 import { useEffect, useState } from "react";
 import { Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router";
-function EditTask({ handleClose, show }) {
+function EditTask({ handleClose, show, taskData, setTaskData }) {
   const { id } = useParams();
+
+  const editTask = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9090/task/updateTask/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(task),
+        }
+      );
+      if (response.ok) {
+        console.log("Task edited");
+      }
+    } catch (error) {
+      console.log("Failed to update task", error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setTaskData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   return (
     <>
@@ -18,15 +41,15 @@ function EditTask({ handleClose, show }) {
               placeholder="Task name..."
               className="input-task"
               name="taskName"
-              //   value={tasks.taskName}
-              // onChange={handleChange}
+              value={taskData.taskName}
+              onChange={handleChange}
             />
             <br />
             <div className="dropdown m-1 row">
-              <Col md={3}>
+              <Col md={3} sm={6}>
                 <h6 className="mt-1">Project</h6>
               </Col>
-              <Col md={6}>
+              <Col md={6} sm={6}>
                 <span>
                   {" "}
                   <button
@@ -93,6 +116,7 @@ function EditTask({ handleClose, show }) {
                 className="btn"
                 type="submit"
                 style={{ backgroundColor: "#ff0854", color: "#fff" }}
+                onClick={editTask}
               >
                 Save task
               </button>

@@ -10,20 +10,24 @@ const AddTask = ({ show, handleClose }) => {
 
   const addTask = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:9090/tasks/addTask", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(taskData),
-      });
-      if (response.ok) {
-        console.log("Task added");
-        handleClose(); // Close the modal only if the task is successfully added
-      } else {
-        console.log("Failed to add task");
+    if (taskData.taskName.length > 0) {
+      try {
+        const response = await fetch("http://localhost:9090/tasks/addTask", {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(taskData),
+        });
+        if (response.ok) {
+          console.log("Task added");
+          handleClose(); // Close the modal only if the task is successfully added
+        } else {
+          console.log("Failed to add task");
+        }
+      } catch (error) {
+        console.log("Failed to add task", error);
       }
-    } catch (error) {
-      console.log("Failed to add task", error);
+    } else {
+      console.log("Enter task name");
     }
   };
 

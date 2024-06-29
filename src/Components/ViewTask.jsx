@@ -5,11 +5,13 @@ import EditTask from "./EditTask";
 import TopBar from "./TopBar";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function ViewTask() {
   const [showEditModal, setEditShowModal] = useState(false);
   const [task, setTask] = useState({ status: "", taskName: "", taskType: "" });
   const { id } = useParams();
+  const navigate = useNavigate();
   const handleCloseEdit = () => {
     setEditShowModal(false);
   };
@@ -21,20 +23,40 @@ function ViewTask() {
     const getTask = async () => {
       try {
         const response = await fetch(
-          `http:localhost:9090/tasks/taskById/${id}`
+          `http://localhost:9090/tasks/taskById/${id}`
         );
         if (response.ok) {
           console.log("Fetched task");
+        } else {
+          console.log("Response error");
         }
-        console.log(response);
+
         const result = await response.json();
         setTask(result);
+        console.log(task.taskName);
       } catch (error) {
         console.log("Failed to get task");
       }
     };
     getTask();
   }, [id]);
+
+  const handleDeleteTask = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9090/tasks/deleteTask/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        navigate("/pma/tasks");
+        console.log("Deleted");
+      }
+    } catch (error) {
+      console.log("Failed to delete", error);
+    }
+  };
   return (
     <>
       <Sidebar />
@@ -75,7 +97,7 @@ function ViewTask() {
                     height="1.2em"
                     width="1.2em"
                     xmlns="http://www.w3.org/2000/svg"
-                    // onClick={showEditModal}
+                    onClick={handleshowEdit}
                   >
                     <path d="M7,17.013l4.413-0.015l9.632-9.54c0.378-0.378,0.586-0.88,0.586-1.414s-0.208-1.036-0.586-1.414l-1.586-1.586	c-0.756-0.756-2.075-0.752-2.825-0.003L7,12.583V17.013z M18.045,4.458l1.589,1.583l-1.597,1.582l-1.586-1.585L18.045,4.458z M9,13.417l6.03-5.973l1.586,1.586l-6.029,5.971L9,15.006V13.417z"></path>
                     <path d="M5,21h14c1.103,0,2-0.897,2-2v-8.668l-2,2V19H8.158c-0.026,0-0.053,0.01-0.079,0.01c-0.033,0-0.066-0.009-0.1-0.01H5V5	h6.847l2-2H5C3.897,3,3,3.897,3,5v14C3,20.103,3.897,21,5,21z"></path>
@@ -83,7 +105,7 @@ function ViewTask() {
                 </button>
                 <button
                   className="btn btn-info p-2 deleteProject"
-                  //   onClick={deleteProject}
+                  onClick={handleDeleteTask}
                 >
                   <svg
                     stroke="currentColor"
@@ -124,7 +146,12 @@ function ViewTask() {
               </div>
             </div>
           </div>
-          <EditTask show={showEditModal} handleClose={handleCloseEdit} />
+          <EditTask
+            show={showEditModal}
+            handleClose={handleCloseEdit}
+            taskData={task}
+            setTaskData={setTask}
+          />
         </div>
       </div>
     </>

@@ -26,18 +26,24 @@ body {
 }
 .nav-link,
 .buttons {
-  border: 1px solid #16b9c3 !important;
+  border: 1px solid #253858 !important;
   width: 6em;
   height: 2em;
-  font-size: 18px !important;
+  font-size: 20px !important;
   border-radius: 0.1em;
-  background-color: #16b9c3 !important;
-  color: white !important;
+  background-color: transparent !important;
+  /* background-color: #0b5ed7 !important; */
+  color: #253858 !important;
   font-weight: 600 !important;
 }
+.demo-link {
+  color: #253858 !important;
+  font-weight: 600 !important;
+  font-size: 20px !important;
+}
+
 .content {
-  text-align: center;
-  margin-top: 6%;
+  margin: 0% 7% 2% 7%;
 }
 .content h1 {
   font-weight: 900;
@@ -65,7 +71,7 @@ body {
   font-size: 20px !important;
   font-weight: 600 !important;
   padding: 10px !important;
-  width: 30%;
+  /* width: 30%; */
 }
 .modal {
   margin-top: 0%;
@@ -120,23 +126,24 @@ textarea:focus {
 }
 
 .video-container iframe {
-  border: 1px solid #febace;
-  border-radius: 0.5em;
+  border: 1px solid transparent;
+
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 99.6%;
   height: 100%;
 }
 .hero .row,
 .hero .features span,
 .hero .text-center {
-  background-color: #f9ffff !important;
+  background-color: whitesmoke !important;
   color: #515151 !important;
 }
 
 .bg {
-  background: url("./assets/bg.jpg") !important;
+  /* background: url("./assets/bg.jpg") !important; */
+  background: linear-gradient(to right, #eff5ff, #bedaff);
   background-position: top;
   background-repeat: no-repeat;
 }
@@ -148,7 +155,7 @@ textarea:focus {
   background-color: #fffafa !important;
 }
 .footer {
-  background-color: #12929e !important;
+  background-color: #212121 !important;
   color: #eaeaea;
   text-align: right;
 }
@@ -344,6 +351,10 @@ textarea:focus {
   margin-right: 1px;
 }
 
+.sign-card {
+  padding: 9%;
+}
+
 @media (max-width: 700px) {
   .logo {
     height: 2.5em !important;
@@ -388,5 +399,14 @@ textarea:focus {
   .task-card {
     width: auto;
     left: auto;
+  }
+  .intro-bold {
+    font-size: 23px !important;
+  }
+  .demo-link {
+    text-align: center;
+  }
+  .sign-form section {
+    margin: 0 !important;
   }
 }
