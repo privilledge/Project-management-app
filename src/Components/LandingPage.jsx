@@ -6,7 +6,7 @@ import placeHolder from "../assets/holder.jpg";
 import placeHolder2 from "../assets/place.jpg";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 function LandingPage() {
   const navigate = useNavigate();
@@ -68,27 +68,30 @@ function LandingPage() {
                     </div>
                     <div className="mt-3 demo-link">
                       {" "}
-                      <a
-                        href="#"
-                        className="demo-link"
-                        style={{ textDecoration: "underline" }}
-                      >
-                        Demo
-                        <svg
-                          stroke="currentColor"
-                          fill="#253858"
-                          stroke-width="0"
-                          viewBox="0 0 24 24"
-                          height="1.2em"
-                          width="1.2em"
-                          xmlns="http://www.w3.org/2000/svg"
+                      <Link to="/pma/home">
+                        {" "}
+                        <a
+                          href="#"
+                          className="demo-link"
+                          style={{ textDecoration: "underline" }}
                         >
-                          <g>
-                            <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path d="M16.004 9.414l-8.607 8.607-1.414-1.414L14.589 8H7.004V6h11v11h-2V9.414z"></path>
-                          </g>
-                        </svg>
-                      </a>
+                          Demo
+                          <svg
+                            stroke="currentColor"
+                            fill="#253858"
+                            strokeWidth="0"
+                            viewBox="0 0 24 24"
+                            height="1.2em"
+                            width="1.2em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g>
+                              <path fill="none" d="M0 0h24v24H0z"></path>
+                              <path d="M16.004 9.414l-8.607 8.607-1.414-1.414L14.589 8H7.004V6h11v11h-2V9.414z"></path>
+                            </g>
+                          </svg>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col-lg-6 sign-form mt-3">
@@ -138,12 +141,12 @@ function LandingPage() {
                             <svg
                               stroke="currentColor"
                               fill="currentColor"
-                              stroke-width="0"
+                              strokeWidth="0"
                               version="1.1"
                               x="0px"
                               y="0px"
                               viewBox="0 0 48 48"
-                              enable-background="new 0 0 48 48"
+                              enableBackground="new 0 0 48 48"
                               height="1.2em"
                               width="1.2em"
                               xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +183,7 @@ function LandingPage() {
                             <svg
                               stroke="currentColor"
                               fill="currentColor"
-                              stroke-width="0"
+                              strokeWidth="0"
                               viewBox="0 0 1024 1024"
                               height="1.2em"
                               width="1.2em"
@@ -198,7 +201,7 @@ function LandingPage() {
                             <svg
                               stroke="currentColor"
                               fill="currentColor"
-                              stroke-width="0"
+                              strokeWidth="0"
                               viewBox="0 0 448 512"
                               height="1.2em"
                               width="1.2em"
@@ -216,7 +219,7 @@ function LandingPage() {
                             <svg
                               stroke="currentColor"
                               fill="currentColor"
-                              stroke-width="0"
+                              strokeWidth="0"
                               viewBox="0 0 496 512"
                               height="1.2em"
                               width="1.2em"
