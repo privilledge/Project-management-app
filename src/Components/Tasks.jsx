@@ -38,6 +38,11 @@ function Tasks() {
   };
   const tasksTodo = tasks.filter((task) => task.status == "to-do");
   const completedTasks = tasks.filter((task) => task.status == "completed");
+
+  const checkTask = () => {
+    setTasks((task) => task.status == "completed");
+  };
+  const unCheckTask = () => {};
   return (
     <>
       <Sidebar />
@@ -56,17 +61,15 @@ function Tasks() {
           </div>
           <div className="todo-list">
             {tasksTodo.map((task) => (
-              <div
-                className="todo-item p-3 mb-1"
-                key={task.id}
-                onClick={() => viewTask(task.id)}
-              >
+              <div className="todo-item p-3 mb-1" key={task.id}>
                 <div className="row">
                   <div className="col-10">
-                    <input type="radio" name="" id="" />
+                    <input type="checkbox" name="" id="" onClick={checkTask} />
+
                     <span
                       className="todo-title p-2"
                       style={{ fontSize: "auto" }}
+                      onClick={() => viewTask(task.id)}
                     >
                       {task.taskName}
                     </span>
@@ -97,7 +100,13 @@ function Tasks() {
                 <div className="completed-item p-3 mb-1 " key={task.id}>
                   <div className="row">
                     <div className="col-10">
-                      <input type="radio" name="" id="" value={1} />
+                      <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        onClick={unCheckTask}
+                        checked
+                      />
                       <span
                         className="todo-title p-2"
                         style={{ fontSize: "auto" }}

@@ -9,7 +9,6 @@ const AddTask = ({ show, handleClose }) => {
   });
 
   const addTask = async (e) => {
-    e.preventDefault();
     if (taskData.taskName.length > 0) {
       try {
         const response = await fetch("http://localhost:9090/tasks/addTask", {

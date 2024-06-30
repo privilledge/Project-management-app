@@ -277,6 +277,10 @@ textarea:focus {
 .todo-title {
   font-size: 15px;
 }
+.todo-title:hover {
+  font-weight: 700;
+  transform: scale(1.3);
+}
 .create-link {
   text-align: right;
 }

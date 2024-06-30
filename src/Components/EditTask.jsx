@@ -4,14 +4,14 @@ import { useParams } from "react-router";
 function EditTask({ handleClose, show, taskData, setTaskData }) {
   const { id } = useParams();
 
-  const editTask = async () => {
+  const editTask = async (e) => {
     try {
       const response = await fetch(
-        `http://localhost:9090/task/updateTask/${id}`,
+        `http://localhost:9090/tasks/editTask/${id}`,
         {
           method: "PUT",
           headers: { "Content-type": "application/json" },
-          body: JSON.stringify(task),
+          body: JSON.stringify(taskData),
         }
       );
       if (response.ok) {
@@ -19,6 +19,7 @@ function EditTask({ handleClose, show, taskData, setTaskData }) {
       }
     } catch (error) {
       console.log("Failed to update task", error);
+      e.preventDefault();
     }
   };
 
