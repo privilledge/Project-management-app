@@ -110,7 +110,7 @@ function LandingPage() {
                           <input
                             type="password"
                             id="form2Example2"
-                            className=" "
+                            className="form-control"
                           />
                         </div>
                         <small>

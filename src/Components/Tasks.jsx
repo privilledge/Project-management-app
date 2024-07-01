@@ -3,7 +3,6 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Col } from "react-bootstrap";
 import AddTask from "./AddTask";
-import EditTask from "./EditTask";
 import { useNavigate } from "react-router";
 
 function Tasks() {
@@ -36,13 +35,41 @@ function Tasks() {
   const viewTask = (id) => {
     navigate(`/pma/viewTask/${id}`);
   };
+  const updateTaskStatus = async (task, newStatus) => {
+    try {
+      const response = await fetch(
+        `http://localhost:9090/tasks/updateTask/${task.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...task, status: newStatus }),
+        }
+      );
+      if (response.ok) {
+        setTasks((prevTasks) =>
+          prevTasks.map((t) =>
+            t.id === task.id ? { ...t, status: newStatus } : t
+          )
+        );
+      } else {
+        console.log("Failed to update task status");
+      }
+    } catch (error) {
+      console.log("Error updating task status:", error);
+    }
+  };
+  const checkTask = (task) => {
+    updateTaskStatus(task, "completed");
+  };
+
+  const unCheckTask = (task) => {
+    updateTaskStatus(task, "to-do");
+  };
   const tasksTodo = tasks.filter((task) => task.status == "to-do");
   const completedTasks = tasks.filter((task) => task.status == "completed");
 
-  const checkTask = () => {
-    setTasks((task) => task.status == "completed");
-  };
-  const unCheckTask = () => {};
   return (
     <>
       <Sidebar />
@@ -64,7 +91,12 @@ function Tasks() {
               <div className="todo-item p-3 mb-1" key={task.id}>
                 <div className="row">
                   <div className="col-10">
-                    <input type="checkbox" name="" id="" onClick={checkTask} />
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      onChange={() => checkTask(task)}
+                    />
 
                     <span
                       className="todo-title p-2"
@@ -104,8 +136,8 @@ function Tasks() {
                         type="checkbox"
                         name=""
                         id=""
-                        onClick={unCheckTask}
                         checked
+                        onChange={() => unCheckTask(task)}
                       />
                       <span
                         className="todo-title p-2"

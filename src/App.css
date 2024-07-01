@@ -413,4 +413,10 @@ textarea:focus {
   .sign-form section {
     margin: 0 !important;
   }
+  .graph {
+    width: 300px !important;
+  }
+  .pieChart {
+    display: none;
+  }
 }
