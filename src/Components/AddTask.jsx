@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, Col } from "react-bootstrap";
 
-const AddTask = ({ show, handleClose }) => {
+const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
   const [taskData, setTaskData] = useState({
     taskName: "",
     taskType: "ordinary",
@@ -9,6 +9,8 @@ const AddTask = ({ show, handleClose }) => {
   });
 
   const addTask = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     if (taskData.taskName.length > 0) {
       try {
         const response = await fetch("http://localhost:9090/tasks/addTask", {
@@ -19,6 +21,13 @@ const AddTask = ({ show, handleClose }) => {
         if (response.ok) {
           console.log("Task added");
           handleClose(); // Close the modal only if the task is successfully added
+          setAddSuccess("Task added successfully!"); // Set add success message
+          showNotification("Task added successfully!"); // Show notification
+
+          // Optionally reload the page after a short delay
+          setTimeout(() => {
+            window.location.reload();
+          }, 1050); // Reload after 1 second (adjust as needed)
         } else {
           console.log("Failed to add task");
         }

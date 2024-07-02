@@ -8,10 +8,14 @@ import { useNavigate } from "react-router";
 function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [notification, setNotification] = useState("");
+  const [addSuccess, setAddSuccess] = useState(""); // State for add success message
   const navigate = useNavigate();
+
   const handleClose = () => {
     setShowModal(false);
   };
+
   const handleShow = () => {
     setShowModal(true);
   };
@@ -35,6 +39,7 @@ function Tasks() {
   const viewTask = (id) => {
     navigate(`/pma/viewTask/${id}`);
   };
+
   const updateTaskStatus = async (task, newStatus) => {
     try {
       const response = await fetch(
@@ -60,6 +65,7 @@ function Tasks() {
       console.log("Error updating task status:", error);
     }
   };
+
   const checkTask = (task) => {
     updateTaskStatus(task, "completed");
   };
@@ -67,8 +73,33 @@ function Tasks() {
   const unCheckTask = (task) => {
     updateTaskStatus(task, "to-do");
   };
-  const tasksTodo = tasks.filter((task) => task.status == "to-do");
-  const completedTasks = tasks.filter((task) => task.status == "completed");
+
+  const tasksTodo = tasks.filter((task) => task.status === "to-do");
+  const completedTasks = tasks.filter((task) => task.status === "completed");
+
+  const handleDeleteTask = async (task) => {
+    try {
+      const response = await fetch(
+        `http://localhost:9090/tasks/deleteTask/${task.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        navigate("/pma/tasks");
+        console.log("Deleted");
+      }
+    } catch (error) {
+      console.log("Failed to delete", error);
+    }
+  };
+
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification("");
+    }, 3000); // Notification disappears after 3 seconds
+  };
 
   return (
     <>
@@ -81,7 +112,12 @@ function Tasks() {
           style={{ background: "transparent" }}
         >
           <div className="tasks-top">
-            <h5 className=" fw-bold p-1">To do</h5>
+            <h5 className=" fw-bold p-1">
+              To do{" "}
+              <span style={{ fontSize: "15px", fontWeight: "500" }}>
+                ({tasksTodo.length})
+              </span>
+            </h5>
             <button className="btn add-task-btn mb-1" onClick={handleShow}>
               Add task
             </button>
@@ -90,7 +126,7 @@ function Tasks() {
             {tasksTodo.map((task) => (
               <div className="todo-item p-3 mb-1" key={task.id}>
                 <div className="row">
-                  <div className="col-10">
+                  <div className="col-8">
                     <input
                       type="checkbox"
                       name=""
@@ -106,8 +142,20 @@ function Tasks() {
                       {task.taskName}
                     </span>
                   </div>
-                  <div className="col-2 star-task">
+                  <div className="col-4 star-task">
                     <span>
+                      <svg
+                        onClick={handleDeleteTask}
+                        stroke="currentColor"
+                        fill="currentColor"
+                        strokeWidth="0"
+                        viewBox="0 0 24 24"
+                        height="1.25em"
+                        width="1.25em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"></path>
+                      </svg>
                       <svg
                         stroke="currentColor"
                         fill="currentColor"
@@ -125,7 +173,12 @@ function Tasks() {
               </div>
             ))}
           </div>
-          <h6 className=" fw-bold p-1">Completed </h6>
+          <h6 className=" fw-bold p-1">
+            Completed{" "}
+            <span style={{ fontSize: "15px", fontWeight: "500" }}>
+              ({completedTasks.length})
+            </span>{" "}
+          </h6>
           <div className="completed-List">
             {completedTasks.length > 0 ? (
               completedTasks.map((task) => (
@@ -170,10 +223,19 @@ function Tasks() {
               </p>
             )}
           </div>
-          <AddTask show={showModal} handleClose={handleClose} />
         </div>
+        {/* Your existing JSX structure */}
+        <AddTask
+          show={showModal}
+          handleClose={handleClose}
+          showNotification={showNotification}
+          setAddSuccess={setAddSuccess} // Pass setAddSuccess to AddTask component
+        />
+        {addSuccess && <div className="notification">{addSuccess}</div>}{" "}
+        {/* Display add success message */}
       </div>
     </>
   );
 }
+
 export default Tasks;

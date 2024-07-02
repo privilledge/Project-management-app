@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router";
-function EditTask({ handleClose, show, taskData, setTaskData }) {
+function EditTask({ handleClose, show, taskData, setTaskData, setAddSuccess }) {
   const { id } = useParams();
 
   const editTask = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         `http://localhost:9090/tasks/editTask/${id}`,
@@ -16,6 +17,8 @@ function EditTask({ handleClose, show, taskData, setTaskData }) {
       );
       if (response.ok) {
         console.log("Task edited");
+        handleClose();
+        setAddSuccess("Task edited successfully!"); // Set add success message
       }
     } catch (error) {
       console.log("Failed to update task", error);
@@ -33,7 +36,7 @@ function EditTask({ handleClose, show, taskData, setTaskData }) {
       <Modal show={show} onHide={handleClose} size="md">
         <form action="">
           <Modal.Header closeButton onHide={handleClose}>
-            <h6 className="fw-bold">Add new task</h6>
+            <h6 className="fw-bold">Edit task</h6>
           </Modal.Header>
           <Modal.Body className="m-2">
             <Col></Col>

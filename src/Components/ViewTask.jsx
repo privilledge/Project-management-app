@@ -11,6 +11,7 @@ function ViewTask() {
   const [showEditModal, setEditShowModal] = useState(false);
   const [task, setTask] = useState({ status: "", taskName: "", taskType: "" });
   const { id } = useParams();
+  const [addSuccess, setAddSuccess] = useState("");
   const navigate = useNavigate();
   const handleCloseEdit = () => {
     setEditShowModal(false);
@@ -151,7 +152,9 @@ function ViewTask() {
             handleClose={handleCloseEdit}
             taskData={task}
             setTaskData={setTask}
+            setAddSuccess={setAddSuccess}
           />
+          {addSuccess && <div className="notification">{addSuccess}</div>}{" "}
         </div>
       </div>
     </>

@@ -45,7 +45,7 @@ function Home() {
           "http://localhost:9090/projects/getProjects"
         );
         const result = await response.json();
-        setProjects(result.slice(0, 4));
+        setProjects(result.slice(0, 3));
       } catch (error) {
         console.log("Failed to fetch");
       }
@@ -97,7 +97,7 @@ function Home() {
                     {tasks.map((task) => (
                       <ul className="mt-3 list-unstyled">
                         <li className="mb-0">
-                          <svg
+                          {/* <svg
                             stroke="currentColor"
                             fill="none"
                             stroke-width="0"
@@ -115,8 +115,22 @@ function Home() {
                               d="M3 12.7396C3 11.6351 3.89543 10.7396 5 10.7396C6.10457 10.7396 7 11.6351 7 12.7396C7 13.8442 6.10457 14.7396 5 14.7396C3.89543 14.7396 3 13.8442 3 12.7396Z"
                               fill="currentColor"
                             ></path>
-                          </svg>
-                          {task.taskName}
+                          </svg> */}
+
+                          {task.status == "completed" ? (
+                            <div>
+                              {" "}
+                              <input type="checkbox" name="" id="" checked />
+                              <s className="p-2">{task.taskName}</s>
+                            </div>
+                          ) : (
+                            <div>
+                              {" "}
+                              <input type="checkbox" name="" id="" />
+                              <span className="p-2">{task.taskName}</span>
+                            </div>
+                          )}
+                          {/* <span> {task.taskName}</span> */}
                         </li>
                       </ul>
                     ))}
@@ -131,12 +145,12 @@ function Home() {
                 <div className="card mb-1">
                   <div className="card-body">
                     <h6 className="fw-bold">Project directory</h6>
-                    <ul className="mt-4 list-unstyled">
+                    <ul className="mt-3 list-unstyled">
                       {projects.map((project) => (
                         <li className="" style={{ cursor: "pointer" }}>
                           <svg
                             stroke="currentColor"
-                            fill="currentColor"
+                            fill="#ff0854"
                             stroke-width="0"
                             viewBox="0 0 640 512"
                             height="1em"
