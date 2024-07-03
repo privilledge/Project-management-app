@@ -93,47 +93,48 @@ function Home() {
                 <div className="card mb-1">
                   <div className="card-body">
                     <h6 className="fw-bold">Tasks</h6>
-
-                    {tasks.map((task) => (
-                      <ul className="mt-3 list-unstyled">
-                        <li className="mb-0">
-                          {/* <svg
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-width="0"
-                            viewBox="0 0 24 24"
-                            height="1em"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="m-1"
-                          >
-                            <path
-                              d="M16.7679 5.71447C17.4779 4.86832 18.7394 4.75795 19.5856 5.46796C20.4317 6.17796 20.5421 7.43947 19.8321 8.28562L10.833 19.0102C10.123 19.8564 8.86153 19.9668 8.01538 19.2568C7.16923 18.5468 7.05886 17.2852 7.76886 16.4391L16.7679 5.71447Z"
-                              fill="currentColor"
-                            ></path>
-                            <path
-                              d="M3 12.7396C3 11.6351 3.89543 10.7396 5 10.7396C6.10457 10.7396 7 11.6351 7 12.7396C7 13.8442 6.10457 14.7396 5 14.7396C3.89543 14.7396 3 13.8442 3 12.7396Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg> */}
-
-                          {task.status == "completed" ? (
-                            <div>
-                              {" "}
-                              <input type="checkbox" name="" id="" checked />
-                              <s className="p-2">{task.taskName}</s>
-                            </div>
-                          ) : (
-                            <div>
-                              {" "}
-                              <input type="checkbox" name="" id="" />
-                              <span className="p-2">{task.taskName}</span>
-                            </div>
-                          )}
-                          {/* <span> {task.taskName}</span> */}
-                        </li>
-                      </ul>
-                    ))}
+                    {tasks.length > 0 ? (
+                      tasks.map((task) => (
+                        <ul className="mt-3 list-unstyled">
+                          <li className="mb-0">
+                            {task.status == "completed" ? (
+                              <div>
+                                {" "}
+                                <input type="checkbox" name="" id="" checked />
+                                <s className="p-2">{task.taskName}</s>
+                              </div>
+                            ) : (
+                              <div>
+                                {" "}
+                                <input type="checkbox" name="" id="" />
+                                <span className="p-2">{task.taskName}</span>
+                              </div>
+                            )}
+                          </li>
+                        </ul>
+                      ))
+                    ) : (
+                      <div className="mt-5 text-center">
+                        <svg
+                          stroke="currentColor"
+                          fill="#ff0854"
+                          stroke-width="0"
+                          viewBox="0 0 16 16"
+                          height="1.2em"
+                          width="1.2em"
+                          xmlns="http://www.w3.org/2000/svg"
+                          onClick={() => navigate("/pma/tasks")}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M4 4h3v1H4v3H3V5H0V4h3V1h1v3zM1 14.5V9h1v5h12V7H8V6h6V4H8V3h6.5l.5.5v11l-.5.5h-13l-.5-.5z"
+                          ></path>
+                        </svg>
+                        <p>(No tasks)</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -146,24 +147,47 @@ function Home() {
                   <div className="card-body">
                     <h6 className="fw-bold">Project directory</h6>
                     <ul className="mt-3 list-unstyled">
-                      {projects.map((project) => (
-                        <li className="" style={{ cursor: "pointer" }}>
+                      {projects.length > 0 ? (
+                        projects.map((project) => (
+                          <li className="" style={{ cursor: "pointer" }}>
+                            <svg
+                              stroke="currentColor"
+                              fill="#ff0854"
+                              stroke-width="0"
+                              viewBox="0 0 640 512"
+                              height="1em"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="m-1"
+                            >
+                              <path d="M384 320H256c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32zM192 32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v128c0 17.67 14.33 32 32 32h95.72l73.16 128.04C211.98 300.98 232.4 288 256 288h.28L192 175.51V128h224V64H192V32zM608 0H480c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32z"></path>
+                            </svg>{" "}
+                            {project.projectName}
+                            <hr />
+                          </li>
+                        ))
+                      ) : (
+                        <div className="text-center mt-5">
                           <svg
                             stroke="currentColor"
                             fill="#ff0854"
                             stroke-width="0"
-                            viewBox="0 0 640 512"
-                            height="1em"
-                            width="1em"
+                            viewBox="0 0 16 16"
+                            height="1.2em"
+                            width="1.2em"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="m-1"
+                            onClick={() => navigate("/pma/projects")}
+                            style={{ cursor: "pointer" }}
                           >
-                            <path d="M384 320H256c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32zM192 32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v128c0 17.67 14.33 32 32 32h95.72l73.16 128.04C211.98 300.98 232.4 288 256 288h.28L192 175.51V128h224V64H192V32zM608 0H480c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32z"></path>
-                          </svg>{" "}
-                          {project.projectName}
-                          <hr />
-                        </li>
-                      ))}
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4 4h3v1H4v3H3V5H0V4h3V1h1v3zM1 14.5V9h1v5h12V7H8V6h6V4H8V3h6.5l.5.5v11l-.5.5h-13l-.5-.5z"
+                            ></path>
+                          </svg>
+                          <p>(No projects)</p>
+                        </div>
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -173,14 +197,14 @@ function Home() {
                   <div className="card-body">
                     <h6 className="fw-bold">Total projects</h6>
                     <div className="py-4 mt-4 text-center">
-                      <h1>
-                        43{" "}
+                      <h2>
+                        {projects.length}{" "}
                         <span>
                           Total
                           <br />
                           Projects
                         </span>
-                      </h1>
+                      </h2>
                     </div>
                   </div>
                 </div>

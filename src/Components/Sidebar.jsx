@@ -130,7 +130,7 @@ function Sidebar() {
             </Link>
           </li>
 
-          <li className="settings">
+          {/* <li className="settings">
             <Link to="/pma/projects">
               <span className="icon">
                 <svg
@@ -150,7 +150,7 @@ function Sidebar() {
               </span>
               <span className="text">Settings</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </>

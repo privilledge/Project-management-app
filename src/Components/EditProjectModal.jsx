@@ -9,7 +9,7 @@ function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
   const handleStatus = (selected) => {
     setSelectedValue(selected);
   };
-  const [data, setData] = useState(projectData);
+
   const { id } = useParams();
 
   const updateProject = async (e) => {
@@ -84,7 +84,7 @@ function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
                     onFocus={() => (ref.current.type = "date")}
                     onBlur={() => (ref.current.type = "text")}
                     required
-                    value={projectData.addedDate}
+                    value={"Added:" + projectData.addedDate}
                   />
                 </Col>
 
@@ -98,7 +98,7 @@ function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
                     ref={ref2}
                     onFocus={() => (ref2.current.type = "date")}
                     onBlur={() => (ref2.current.type = "text")}
-                    value={projectData.dueDate}
+                    value={"Due:" + projectData.dueDate}
                     required
                   />
                 </Col>
@@ -114,7 +114,7 @@ function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
                         borderRadius: "2px",
                       }}
                     >
-                      {selectedValue}
+                      {!selectedValue ? projectData.status : selectedValue}
                     </button>
                     <ul className="dropdown-menu">
                       <li
@@ -138,16 +138,40 @@ function EditProjectModal({ show, handleClose, projectData, setProjectData }) {
                     </ul>
                   </div>
                 </Col>
+                <Col md={3} sm={4} xs={4}>
+                  {" "}
+                  <input
+                    type="number"
+                    name="progress"
+                    placeholder="Progress %"
+                    id=""
+                    value={projectData.progress}
+                    onChange={handleChange}
+                  />
+                </Col>
               </div>
               <hr style={{ color: "#31D2F2" }} />
               <textarea
                 name="description"
                 id=""
                 cols=""
-                rows="10"
+                rows="5"
                 placeholder=" Write a description,a project brief or collect ideas..."
                 style={{ border: "none", width: "100%" }}
                 value={projectData.description}
+                onChange={handleChange}
+              />
+
+              <hr />
+              <textarea
+                name="notes"
+                id=""
+                cols=""
+                rows="5"
+                placeholder=" Write some notes..."
+                style={{ border: "none", width: "100%" }}
+                value={projectData.notes}
+                onChange={handleChange}
               />
 
               <hr />

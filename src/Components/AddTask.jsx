@@ -27,7 +27,7 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
           // Optionally reload the page after a short delay
           setTimeout(() => {
             window.location.reload();
-          }, 1050); // Reload after 1 second (adjust as needed)
+          }, 700); // Reload after 1 second (adjust as needed)
         } else {
           console.log("Failed to add task");
         }

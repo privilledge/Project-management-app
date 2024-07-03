@@ -12,6 +12,8 @@ function Projects() {
   const handleShowModal = () => setShowModal(true);
   const handleHideModal = () => setShowModal(false);
   const [projects, setProjects] = useState({});
+  const [addSuccess, setAddSuccess] = useState(""); // State for add success message
+  const [notification, setNotification] = useState("");
 
   const placeholderProjects = [{}];
   // Split the projects array into chunks of 3
@@ -36,6 +38,12 @@ function Projects() {
   }
   const handleViewProject = (id) => {
     navigate(`/pma/viewProject/${id}`);
+  };
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification("");
+    }, 3000); // Notification disappears after 3 seconds
   };
   return (
     <>
@@ -90,7 +98,12 @@ function Projects() {
               </a>
             </Col>
           </div>
-          <CreateProjectModal show={showModal} handleClose={handleHideModal} />
+          <CreateProjectModal
+            show={showModal}
+            handleClose={handleHideModal}
+            setAddSuccess={setAddSuccess}
+          />
+          {addSuccess && <div className="notification">{addSuccess}</div>}{" "}
           {projects.length > 0 ? (
             <div className="projects-cards mt-2">
               {projectChunks.map((chunk, chunkIndex) => (
@@ -151,9 +164,14 @@ function Projects() {
                             </h6>
                           </div>
                           <div className="mt-4">
-                            <h6 style={{ fontSize: "14px" }}>Progress : 75%</h6>
+                            <h6 style={{ fontSize: "14px" }}>
+                              Progress : {project.progress}%
+                            </h6>
                             <div className="progress card-progress ">
-                              <div className="progress-bar  w-75"></div>
+                              <div
+                                className={`progress-bar w-${project.progress}`}
+                                style={{ width: `${project.progress}%` }}
+                              ></div>
                             </div>
                           </div>
                         </div>

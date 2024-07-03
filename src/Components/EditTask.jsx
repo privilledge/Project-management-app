@@ -18,7 +18,6 @@ function EditTask({ handleClose, show, taskData, setTaskData, setAddSuccess }) {
       if (response.ok) {
         console.log("Task edited");
         handleClose();
-        setAddSuccess("Task edited successfully!"); // Set add success message
       }
     } catch (error) {
       console.log("Failed to update task", error);

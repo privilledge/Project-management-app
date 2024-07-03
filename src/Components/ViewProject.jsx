@@ -4,6 +4,7 @@ import TopBar from "./TopBar";
 import { Link, useParams } from "react-router-dom";
 import EditProjectModal from "./EditProjectModal";
 import { useNavigate } from "react-router-dom";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "react-bootstrap";
 
 const ViewProject = () => {
   const navigate = useNavigate();
@@ -14,10 +15,12 @@ const ViewProject = () => {
     status: "",
     dueDate: "",
     addedDate: "",
+    notes: "",
+    progress: "",
   });
   const { id } = useParams();
   const [editModal, setEditModal] = useState(false);
-
+  const [deleteModal, setDeleteModal] = useState(false);
   useEffect(() => {
     const getProject = async () => {
       try {
@@ -58,6 +61,12 @@ const ViewProject = () => {
     } catch (error) {
       console.log("Failed to delete");
     }
+  };
+  const showDeleteModal = () => {
+    setDeleteModal(true);
+  };
+  const hideDeleteModal = () => {
+    setDeleteModal(false);
   };
 
   return (
@@ -108,7 +117,7 @@ const ViewProject = () => {
                   </button>
                   <button
                     className="btn btn-info p-2 deleteProject"
-                    onClick={deleteProject}
+                    onClick={showDeleteModal}
                   >
                     <svg
                       stroke="currentColor"
@@ -122,6 +131,32 @@ const ViewProject = () => {
                       <path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"></path>
                     </svg>
                   </button>
+                  <Modal show={deleteModal} size="sm" onHide={hideDeleteModal}>
+                    <ModalHeader
+                      closeButton
+                      style={{ border: "none" }}
+                    ></ModalHeader>
+                    <ModalBody className="text-center">
+                      {" "}
+                      <h5>Delete project?</h5>
+                    </ModalBody>
+                    <ModalFooter className="text-center">
+                      <button
+                        className="btn-sm btn btn-info"
+                        style={{ color: "#fff", fontSize: "15px" }}
+                        onClick={hideDeleteModal}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="btn-sm btn btn-danger"
+                        style={{ fontSize: "15px" }}
+                        onClick={deleteProject}
+                      >
+                        Yes
+                      </button>
+                    </ModalFooter>
+                  </Modal>
                 </div>
                 <EditProjectModal
                   show={editModal}
@@ -139,18 +174,22 @@ const ViewProject = () => {
                   className="summary"
                   style={{ color: "GrayText", fontSize: "16px" }}
                 >
-                  <h6>{projectData.summary}</h6>
+                  <h6>Summary:</h6> <hr style={{ color: "red", margin: 0 }} />
+                  {projectData.summary}
                 </div>
+                <br />
                 <div className="description">
                   <p
                     className=""
                     style={{ color: "GrayText", fontSize: "15px" }}
                   >
+                    <h6>Project description:</h6>{" "}
+                    <hr style={{ color: "red", margin: 0 }} />
                     {projectData.description}
                   </p>
                 </div>
 
-                <div className="notes">
+                {/* <div className="notes">
                   <p className="" style={{ fontWeight: "600" }}>
                     Tasks:
                   </p>
@@ -160,19 +199,27 @@ const ViewProject = () => {
                     <li>Task</li>
                     <li>Task</li>
                   </ul>
-                </div>
-
+                </div> */}
+                <br />
                 <div className="notes">
-                  <p className="" style={{ fontWeight: "600" }}>
-                    Notes:
+                  <p
+                    className=""
+                    style={{ color: "GrayText", fontSize: "15px" }}
+                  >
+                    <h6>Project notes:</h6>{" "}
+                    <hr style={{ color: "red", margin: 0 }} />
+                    {projectData.notes}
                   </p>
-                  <hr style={{ color: "red" }} />
-                  <p>Notes here</p>
                 </div>
                 <p className="" style={{ fontWeight: "600" }}>
-                  Progress
+                  Progress :{projectData.progress}%
                 </p>
-                <div className="progress">20%</div>
+                <div className="progress card-progress ">
+                  <div
+                    className={`progress-bar w-${projectData.progress}`}
+                    style={{ width: `${projectData.progress}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
           </div>

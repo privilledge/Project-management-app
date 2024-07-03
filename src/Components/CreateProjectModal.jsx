@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Modal, Button, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
-function CreateProjectModal({ show, handleClose }) {
+function CreateProjectModal({ show, handleClose, setAddSuccess }) {
   const ref = useRef();
   const ref2 = useRef();
   const navigate = useNavigate;
@@ -13,11 +13,13 @@ function CreateProjectModal({ show, handleClose }) {
     summary: "",
     addedDate: "",
     dueDate: "",
+    progress: "",
   });
 
   const handleSelectedValue = (value) => setSelectedValue(value);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         "http://localhost:9090/projects/addProject",
@@ -29,6 +31,12 @@ function CreateProjectModal({ show, handleClose }) {
       );
       if (response.ok) {
         console.log("Added project");
+        handleClose();
+        setAddSuccess("Project added successfully!"); // Set add success message
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
       navigate("/pma/projects");
     } catch (error) {
@@ -153,20 +161,43 @@ function CreateProjectModal({ show, handleClose }) {
                     </ul>
                   </div>
                 </Col>
+                <Col md={3} sm={4} xs={4}>
+                  <input
+                    type="number"
+                    name="progress"
+                    placeholder="Progress %"
+                    id=""
+                    value={data.progress}
+                    onChange={handleOnchange}
+                  />
+                </Col>
               </div>
               <hr style={{ color: "#31D2F2" }} />
               <textarea
                 name="description"
                 id=""
                 cols=""
-                rows="10"
-                placeholder=" Write a description,a project brief or collect ideas..."
+                rows="5"
+                placeholder=" Write a description or a project brief..."
                 style={{ border: "none", width: "100%" }}
                 value={data.description}
                 onChange={handleOnchange}
               />
 
               <hr />
+              <textarea
+                name="notes"
+                id=""
+                cols=""
+                rows="5"
+                placeholder=" Write some notes..."
+                style={{ border: "none", width: "100%" }}
+                value={data.notes}
+                onChange={handleOnchange}
+              />
+
+              <hr />
+
               <div
                 className="row"
                 style={{ display: "flex", justifyContent: "flex-end" }}
