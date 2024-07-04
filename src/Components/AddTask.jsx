@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Modal, Col } from "react-bootstrap";
+import { useEffect } from "react";
 
 const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
   const [taskData, setTaskData] = useState({
     taskName: "",
     taskType: "ordinary",
     status: "to-do",
+    priority: "low",
+    project: "",
   });
+  const [projects, setProjects] = useState([]);
 
   const addTask = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -42,6 +46,24 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  useEffect(() => {
+    const getProjects = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:9090/projects/getProjects"
+        );
+        const result = await response.json();
+        setProjects(result);
+      } catch (error) {
+        console.log("Failed to fetch");
+      }
+    };
+    getProjects();
+  }, []);
+
+  const handleProjectSelect = (project) => {
+    setTaskData((prevData) => ({ ...prevData, project: project }));
   };
 
   return (
@@ -98,7 +120,16 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
                     </span>
                   </button>
                   <ul className="dropdown-menu">
-                    <li className="dropdown-item">Project </li>
+                    {projects.map((project) => (
+                      <li
+                        className="dropdown-item"
+                        name="project"
+                        onClick={() => handleProjectSelect(project.projectName)}
+                      >
+                        {" "}
+                        {project.projectName}
+                      </li>
+                    ))}
                   </ul>
                 </span>
               </Col>
@@ -111,15 +142,15 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
               <Col md={9}>
                 {" "}
                 <span>
-                  <div className="btn-group">
-                    {" "}
-                    <button className="btn btn-danger btn-sm">
-                      High priority
-                    </button>
-                    <button className="btn btn-info btn-sm">
-                      Low priority
-                    </button>
-                  </div>
+                  <select
+                    id="options"
+                    name="options"
+                    style={{ width: "155px", border: "solid #ccc 1px" }}
+                    className="priority-select"
+                  >
+                    <option value="option1">Low</option>
+                    <option value="option2">High</option>
+                  </select>
                 </span>
               </Col>
             </div>

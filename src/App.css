@@ -290,6 +290,7 @@ textarea:focus {
 }
 .add-task-btn {
   background-color: #ff0854 !important;
+
   padding: 0.3rem 1rem 0.3rem 1rem !important;
   height: 2rem;
   color: #fff !important;
@@ -369,6 +370,9 @@ textarea:focus {
   border-left: solid 7px #16b9c3;
   z-index: 1; /* Ensure it's above other content */
   font-weight: 600;
+}
+.priority-select:focus {
+  outline: none;
 }
 
 @media (max-width: 700px) {

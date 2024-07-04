@@ -197,14 +197,14 @@ function Home() {
                   <div className="card-body">
                     <h6 className="fw-bold">Total projects</h6>
                     <div className="py-4 mt-4 text-center">
-                      <h2>
+                      <h3>
                         {projects.length}{" "}
                         <span>
                           Total
                           <br />
                           Projects
                         </span>
-                      </h2>
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -213,7 +213,23 @@ function Home() {
                 <div className="card mb-1" onClick={reportsPage}>
                   <div className="card-body">
                     <h6 className="fw-bold">Reports</h6>
-                    <div className="row">
+                    <div className="text-center mt-5">
+                      <svg
+                        stroke="#000"
+                        fill="#ff0854"
+                        strokeWidth="0"
+                        viewBox="0 0 16 16"
+                        height="9em"
+                        width="9em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"
+                        ></path>
+                      </svg>
+                    </div>
+                    {/* <div className="row">
                       <div
                         className="col-lg-5 col-sm-6 mt-0"
                         style={{ textAlign: "center" }}
@@ -236,7 +252,7 @@ function Home() {
                           style={{ width: "200px", height: "170px" }}
                         />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
