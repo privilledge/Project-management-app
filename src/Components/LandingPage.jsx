@@ -251,12 +251,12 @@ function LandingPage() {
                     step ahead.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button
+                    {/* <button
                       type="button"
                       className="btn btn-outline-info btn-lg px-4 me-md-2"
                     >
                       Get started
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div className="col-10 sShot text-center col-sm-8 col-lg-6">
@@ -282,12 +282,12 @@ function LandingPage() {
                     you use to get work done.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button
+                    {/* <button
                       type="button"
                       className="btn btn-outline-info btn-lg px-4 me-md-2"
                     >
                       Explore features
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div className="col-10 col-sm-8 col-lg-6">
@@ -315,12 +315,12 @@ function LandingPage() {
                     every need and at every level.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button
+                    {/* <button
                       type="button"
                       className="btn  btn-outline-info btn-lg px-4 me-md-2"
                     >
                       Get started
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div className="col-10 col-sm-8 col-lg-6">
