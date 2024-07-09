@@ -15,8 +15,8 @@ const CalendarSetup = () => {
     },
     {
       title: "Meeting notes",
-      start: new Date(2024, 5, 27, 7, 0),
-      end: new Date(2024, 5, 27, 8, 0),
+      start: new Date(2024, 6, 27, 7, 0),
+      end: new Date(2024, 6, 27, 8, 0),
       allDay: false,
     },
   ];

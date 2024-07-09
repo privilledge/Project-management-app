@@ -72,7 +72,7 @@ function LandingPage() {
                         {" "}
                         <a
                           href="#"
-                          className="demo-link"
+                          className="demo-link btn btn-outline-secondary"
                           style={{ textDecoration: "underline" }}
                         >
                           Demo
@@ -108,7 +108,7 @@ function LandingPage() {
                         <div data-mdb-input-init className="form-outline mb-4">
                           <h6>Email</h6>
                           <input
-                            type="password"
+                            type="email"
                             id="form2Example2"
                             className="form-control"
                           />
@@ -236,7 +236,7 @@ function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="image-columns">
+          {/* <div className="image-columns">
             <div className="container col-xxl-8 px-4 py-0">
               <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div className="col-lg-6">
@@ -251,12 +251,7 @@ function LandingPage() {
                     step ahead.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    {/* <button
-                      type="button"
-                      className="btn btn-outline-info btn-lg px-4 me-md-2"
-                    >
-                      Get started
-                    </button> */}
+               
                   </div>
                 </div>
                 <div className="col-10 sShot text-center col-sm-8 col-lg-6">
@@ -272,7 +267,7 @@ function LandingPage() {
               </div>
             </div>
             <div className="container col-xxl-8 px-4 py-">
-              <div className="row flex-lg-row align-items-center g-5 py-5">
+              {/* <div className="row flex-lg-row align-items-center g-5 py-5">
                 <div className="col-lg-6">
                   <h3 className="fw-bold lh-1 mb-3">Everything in one place</h3>
                   <hr />
@@ -282,12 +277,7 @@ function LandingPage() {
                     you use to get work done.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    {/* <button
-                      type="button"
-                      className="btn btn-outline-info btn-lg px-4 me-md-2"
-                    >
-                      Explore features
-                    </button> */}
+                  
                   </div>
                 </div>
                 <div className="col-10 col-sm-8 col-lg-6">
@@ -315,12 +305,7 @@ function LandingPage() {
                     every need and at every level.
                   </p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    {/* <button
-                      type="button"
-                      className="btn  btn-outline-info btn-lg px-4 me-md-2"
-                    >
-                      Get started
-                    </button> */}
+                   
                   </div>
                 </div>
                 <div className="col-10 col-sm-8 col-lg-6">
@@ -334,9 +319,9 @@ function LandingPage() {
                   />
                 </div>
               </div>
-            </div>
-          </div>
-          <section className="hero">
+            </div> */}
+        </div>
+        {/* <section className="hero">
             <div className="row px-5 py-5">
               <Row className="features">
                 <h1 className="display-6 text-center fw-bold">
@@ -358,9 +343,7 @@ function LandingPage() {
                           moving forward. In a glance, see everything from
                           “things to do” to “aww yeah, we did it!”
                         </p>
-                        {/* <button className="btn  btn-outline-info">
-                          Sign up
-                        </button> */}
+                       
                       </div>
                     </div>
                     <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
@@ -372,9 +355,7 @@ function LandingPage() {
                           ToDo, Doing, done or build a workflow custom for you.
                           There is no wrong way with myWorkSpace
                         </p>
-                        {/* <button className="btn  btn-outline-info">
-                          Try for free
-                        </button> */}
+                    
                       </div>
                     </div>
                     <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
@@ -385,25 +366,23 @@ function LandingPage() {
                           information to get the job done. As you make progress,
                           move cards across lists as to show their progress
                         </p>
-                        {/* <button className="btn  btn-outline-info">
-                          Get started
-                        </button> */}
+                       
                       </div>
                     </div>
                   </div>
                 </div>
               </Row>
             </div>
-          </section>
+          </section> */}
 
-          <section className="footer">
+        {/* <section className="footer">
             <div className="row px-5 py-3">
               <span className="fw-bold">
                 Copyright@2024 Privilledge Mashegede
               </span>
             </div>
           </section>
-        </div>
+        </div> */}
       </body>
     </>
   );
