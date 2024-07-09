@@ -141,7 +141,7 @@ function ViewTask() {
                   ></ModalHeader>
                   <ModalBody className="text-center">
                     {" "}
-                    <h5>Delete project?</h5>
+                    <h5>Delete task?</h5>
                   </ModalBody>
                   <ModalFooter className="text-center">
                     <button
