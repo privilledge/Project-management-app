@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Col } from "react-bootstrap";
-import { useEffect } from "react";
 
 const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
   const [taskData, setTaskData] = useState({
@@ -8,45 +7,11 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
     taskType: "ordinary",
     status: "to-do",
     priority: "low",
-    project: "",
+    projectId: "",
   });
   const [projects, setProjects] = useState([]);
+  const [projectId, setProjectId] = useState("");
 
-  const addTask = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-
-    if (taskData.taskName.length > 0) {
-      try {
-        const response = await fetch("http://localhost:9090/tasks/addTask", {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(taskData),
-        });
-        if (response.ok) {
-          console.log("Task added");
-          handleClose(); // Close the modal only if the task is successfully added
-          setAddSuccess("Task added successfully!"); // Set add success message
-          showNotification("Task added successfully!"); // Show notification
-
-          // Optionally reload the page after a short delay
-          setTimeout(() => {
-            window.location.reload();
-          }, 700); // Reload after 1 second (adjust as needed)
-        } else {
-          console.log("Failed to add task");
-        }
-      } catch (error) {
-        console.log("Failed to add task", error);
-      }
-    } else {
-      console.log("Enter task name");
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setTaskData((prevData) => ({ ...prevData, [name]: value }));
-  };
   useEffect(() => {
     const getProjects = async () => {
       try {
@@ -56,14 +21,50 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
         const result = await response.json();
         setProjects(result);
       } catch (error) {
-        console.log("Failed to fetch");
+        console.log("Failed to fetch projects", error);
       }
     };
     getProjects();
   }, []);
 
-  const handleProjectSelect = (project) => {
-    setTaskData((prevData) => ({ ...prevData, project: project }));
+  const addTask = async (e) => {
+    e.preventDefault();
+    const newTask = { ...taskData, project: { id: projectId } };
+    if (taskData.taskName.length > 0 && projectId) {
+      try {
+        const response = await fetch("http://localhost:9090/tasks/addTask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newTask),
+        });
+        if (response.ok) {
+          console.log("Task added");
+          handleClose();
+          setAddSuccess("Task added successfully!");
+          showNotification("Task added successfully!");
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 700);
+        } else {
+          console.log("Failed to add task");
+        }
+      } catch (error) {
+        console.log("Failed to add task", error);
+      }
+    } else {
+      console.log("Enter task name and select a project");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTaskData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleProjectChange = (event) => {
+    setProjectId(event.target.value);
+    setTaskData((prevData) => ({ ...prevData, projectId: event.target.value }));
   };
 
   return (
@@ -89,69 +90,35 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
                 <h6 className="mt-1">Project</h6>
               </Col>
               <Col md={6}>
-                <span>
-                  {" "}
-                  <button
-                    className="dropdown-toggle custom-dropdown-toggle m-1"
-                    data-bs-toggle="dropdown"
-                    style={{
-                      border: "1px solid whitesmoke",
-                      padding: "0.5%",
-                      backgroundColor: "transparent",
-                    }}
-                  >
-                    Choose project{" "}
-                    <span>
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth="0"
-                        viewBox="0 0 20 20"
-                        height="1.3em"
-                        width="1.3em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
-                  <ul className="dropdown-menu">
-                    {projects.map((project) => (
-                      <li
-                        className="dropdown-item"
-                        name="project"
-                        onClick={() => handleProjectSelect(project.projectName)}
-                      >
-                        {" "}
-                        {project.projectName}
-                      </li>
-                    ))}
-                  </ul>
-                </span>
+                <select
+                  value={projectId}
+                  onChange={handleProjectChange}
+                  className="form-select"
+                >
+                  <option value="">--Select project--</option>
+                  {projects.map((project) => (
+                    <option key={project.id} value={project.id}>
+                      {project.projectName}
+                    </option>
+                  ))}
+                </select>
               </Col>
             </div>
-
             <div className="priority m-1 row">
               <Col md={3}>
                 <h6 className="mt-1">Priority</h6>
               </Col>
               <Col md={9}>
-                {" "}
-                <span>
-                  <select
-                    id="options"
-                    name="options"
-                    style={{ width: "155px", border: "solid #ccc 1px" }}
-                    className="priority-select"
-                  >
-                    <option value="option1">Low</option>
-                    <option value="option2">High</option>
-                  </select>
-                </span>
+                <select
+                  name="priority"
+                  value={taskData.priority}
+                  onChange={handleChange}
+                  className="priority-select"
+                  style={{ width: "155px", border: "solid #ccc 1px" }}
+                >
+                  <option value="low">Low</option>
+                  <option value="high">High</option>
+                </select>
               </Col>
             </div>
           </Modal.Body>

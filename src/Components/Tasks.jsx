@@ -252,6 +252,7 @@ function Tasks() {
                       <span
                         className="todo-title p-2"
                         style={{ fontSize: "auto" }}
+                        onClick={() => viewTask(task.id)}
                       >
                         <s>{task.taskName}</s>
                       </span>
