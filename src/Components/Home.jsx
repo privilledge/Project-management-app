@@ -8,8 +8,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import graph from "../assets/graph.png";
 import pieChart from "../assets/pieChart.png";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const username = useSelector((state) => state.username);
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -63,7 +65,11 @@ function Home() {
             <Row>
               <Col md={7} className="py-3">
                 {" "}
-                <h2 className="fw-bold py-0 mb-0">Hi Privilledge</h2>
+                {username.length > 0 ? (
+                  <h2 className="fw-bold py-0 mb-0">Hi {username}</h2>
+                ) : (
+                  <h2 className="fw-bold py-0 mb-0">Hi Privilledge</h2>
+                )}
                 <small className="mb-0 mt-0">Welcome to your workspace</small>
               </Col>
               <Col md={5} className="py-3 create">

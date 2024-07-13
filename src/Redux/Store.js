@@ -1,8 +1,8 @@
 // store.js
 
 import { legacy_createStore as createStore } from "redux";
-import emailReducer from "./emailReducer";
+import Reducer from "./Reducer";
 
-const Store = createStore(emailReducer);
+const Store = createStore(Reducer);
 
 export default Store;

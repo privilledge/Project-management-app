@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setEmail } from "../Redux/emailAction";
+import { setEmail } from "../Redux/Action";
 // import { useHistory } from "react-router-dom";
 function LandingPage() {
   const dispatch = useDispatch();
