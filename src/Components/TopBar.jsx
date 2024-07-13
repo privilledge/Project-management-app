@@ -11,8 +11,8 @@ function TopBar() {
           <Col md={5}>
             <Searchbar />
           </Col>
-          <Col md={5}></Col>
-          <Col md={2}>
+          <Col md={3}></Col>
+          <Col md={4}>
             <Icon />
           </Col>
         </Row>
