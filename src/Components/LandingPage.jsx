@@ -8,11 +8,27 @@ import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setEmail } from "../Redux/emailAction";
+// import { useHistory } from "react-router-dom";
 function LandingPage() {
+  const dispatch = useDispatch();
+  // const history = useHistory();
   const navigate = useNavigate();
+  const [data, setData] = useState({ email: "" });
 
-  const homePage = () => {
-    navigate("/pma/home");
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSignUp = () => {
+    if (data.email.length > 0) {
+      dispatch(setEmail(data.email));
+
+      navigate(`/pma/signup`);
+    }
   };
   return (
     <>
@@ -21,10 +37,6 @@ function LandingPage() {
           <a className="navbar-brand " href="#">
             <img src={smallLogo} alt="" className="logo" />
           </a>
-
-          {/* <button className="nav-link btn btn-primary" onClick={homePage}>
-            Demo
-          </button> */}
         </nav>
         <div className=" px-0">
           <div className="bg">
@@ -73,7 +85,7 @@ function LandingPage() {
                         <a
                           href="#"
                           className="demo-link btn btn-outline-secondary"
-                          style={{ textDecoration: "underline" }}
+                          style={{}}
                         >
                           Demo
                           <svg
@@ -109,8 +121,11 @@ function LandingPage() {
                           <h6>Email</h6>
                           <input
                             type="email"
-                            id="form2Example2"
                             className="form-control"
+                            value={data.email}
+                            name="email"
+                            onChange={handleOnchange}
+                            required
                           />
                         </div>
                         <small>
@@ -125,11 +140,17 @@ function LandingPage() {
                         <button
                           data-mdb-ripple-init
                           type="button"
-                          className="btn btn-primary btn-block mb-4 mt-3"
+                          className="btn btn-primary btn-block mb-0 mt-3"
+                          onClick={handleSignUp}
                         >
                           Sign up
                         </button>
-
+                        <small className="text-center mb-4">
+                          Already have an account?{" "}
+                          <Link to={"/pma/login"}>
+                            <a href="#">Log in</a>
+                          </Link>
+                        </small>
                         <div className="text-center">
                           <p>Or sign up with:</p>
                           <button
@@ -236,153 +257,7 @@ function LandingPage() {
               </div>
             </div>
           </div>
-          {/* <div className="image-columns">
-            <div className="container col-xxl-8 px-4 py-0">
-              <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div className="col-lg-6">
-                  <h3 className=" fw-bold lh-1 mb-3">
-                    See project progress at a glance
-                  </h3>
-                  <hr />
-                  <p className="lead ">
-                    One source of truth means ultimate visibility into
-                    bottlenecks, risks, resourcing struggles and more.
-                    Dashboards surface real-time progress so you're always a
-                    step ahead.
-                  </p>
-                  <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-               
-                  </div>
-                </div>
-                <div className="col-10 sShot text-center col-sm-8 col-lg-6">
-                  <img
-                    src={placeHolder}
-                    className="d-block mx-lg-auto img-fluid"
-                    alt="Bootstrap Themes"
-                    width="700"
-                    height="500"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="container col-xxl-8 px-4 py-">
-              {/* <div className="row flex-lg-row align-items-center g-5 py-5">
-                <div className="col-lg-6">
-                  <h3 className="fw-bold lh-1 mb-3">Everything in one place</h3>
-                  <hr />
-                  <p className="lead ">
-                    Spend less time trying to get aligned and more time driving
-                    projects forward with confidence.Integrate with every tool
-                    you use to get work done.
-                  </p>
-                  <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                  
-                  </div>
-                </div>
-                <div className="col-10 col-sm-8 col-lg-6">
-                  <img
-                    src={placeHolder2}
-                    className="d-block mx-lg-auto img-fluid"
-                    alt="Bootstrap Themes"
-                    width="700"
-                    height="500"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="container col-xxl-8 px-4 py-1">
-              <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div className="col-lg-6">
-                  <h3 className="fw-bold lh-1 mb-3">
-                    Break down complex work into simple tasks
-                  </h3>{" "}
-                  <hr />
-                  <p className="lead">
-                    Plan, organize, and collaborate on any company objective
-                    with powerful task management that can be customized for
-                    every need and at every level.
-                  </p>
-                  <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                   
-                  </div>
-                </div>
-                <div className="col-10 col-sm-8 col-lg-6">
-                  <img
-                    src={tempImage}
-                    className="d-block mx-lg-auto img-fluid"
-                    alt="Bootstrap Themes"
-                    width="700"
-                    height="500"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div> */}
         </div>
-        {/* <section className="hero">
-            <div className="row px-5 py-5">
-              <Row className="features">
-                <h1 className="display-6 text-center fw-bold">
-                  A productivity powerhouse
-                </h1>
-                <p className="fw-bold text-center">
-                  Simple, flexible, and powerful. All it takes are boards,
-                  lists, and cards to get a clear view of who’s doing what and
-                  what needs to get done.{" "}
-                </p>
-
-                <div className="container">
-                  <div className="row features-cards justify-content-between">
-                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
-                      <div className="p-3">
-                        <h5 className="fw-bold">Boards</h5>
-                        <p>
-                          myWorkSpace boards keep tasks organized and work
-                          moving forward. In a glance, see everything from
-                          “things to do” to “aww yeah, we did it!”
-                        </p>
-                       
-                      </div>
-                    </div>
-                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
-                      <div className="p-3">
-                        <h5 className="fw-bold">Lists</h5>
-
-                        <p>
-                          The different stages of a task. Start as simple as
-                          ToDo, Doing, done or build a workflow custom for you.
-                          There is no wrong way with myWorkSpace
-                        </p>
-                    
-                      </div>
-                    </div>
-                    <div className="col-md-3 mx-3 mb-5 mx-md-5 card">
-                      <div className="p-3  ">
-                        <h5 className="fw-bold">Cards</h5>
-                        <p>
-                          Cards represent tasks or ideas and hold all the
-                          information to get the job done. As you make progress,
-                          move cards across lists as to show their progress
-                        </p>
-                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Row>
-            </div>
-          </section> */}
-
-        {/* <section className="footer">
-            <div className="row px-5 py-3">
-              <span className="fw-bold">
-                Copyright@2024 Privilledge Mashegede
-              </span>
-            </div>
-          </section>
-        </div> */}
       </body>
     </>
   );

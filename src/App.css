@@ -362,6 +362,16 @@ textarea:focus {
 .sign-card {
   padding: 9%;
 }
+.log-in-card {
+  padding: 6%;
+}
+.login-page {
+  background: linear-gradient(to right, #eff5ff, #bedaff);
+}
+
+.code-input input {
+  width: 70px !important;
+}
 .notification {
   position: fixed;
   top: 15px;
