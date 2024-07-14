@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import smallLogo from "../assets/smallLogo.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserName } from "../Redux/Action";
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +25,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("email", email);
     formData.append("password", password);
+
     try {
       const response = await fetch(`http://localhost:9090/users/login`, {
         method: "POST",
@@ -32,15 +36,18 @@ function Login() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.text();
+      const data = await response.json();
       if (data !== "Invalid login") {
         console.log("User logged in successfully");
+        localStorage.setItem("token", data.token);
+        console.log(data.username);
+        dispatch(setUserName(data.username));
         navigate("/pma/home");
       } else {
         alert("Invalid credentials");
       }
     } catch (error) {
-      console.log("Error", error);
+      console.error("Error", error);
     }
   };
 

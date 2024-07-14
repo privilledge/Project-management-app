@@ -6,8 +6,6 @@ import CalendarWidget from "./CalendarWidget";
 import CreateProjectModal from "./CreateProjectModal";
 import { useState } from "react";
 import { useEffect } from "react";
-import graph from "../assets/graph.png";
-import pieChart from "../assets/pieChart.png";
 import { useSelector } from "react-redux";
 
 function Home() {
@@ -44,7 +42,13 @@ function Home() {
     const getProjects = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9090/projects/getProjects"
+          "http://localhost:9090/projects/getProjects",
+          {
+            method: "GET",
+            header: {},
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
         );
         const result = await response.json();
         setProjects(result.slice(0, 3));
@@ -65,7 +69,8 @@ function Home() {
             <Row>
               <Col md={7} className="py-3">
                 {" "}
-                {username.length > 0 ? (
+                {/* <h2 className="fw-bold py-0 mb-0">Hi {username}</h2> */}
+                {username != "" ? (
                   <h2 className="fw-bold py-0 mb-0">Hi {username}</h2>
                 ) : (
                   <h2 className="fw-bold py-0 mb-0">Hi Privilledge</h2>
