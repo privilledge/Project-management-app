@@ -39,6 +39,7 @@ function Signup() {
           console.log("Failed to sign in");
         }
         const result = response.text();
+        localStorage.setItem("token", result.token);
         setData(result);
       } catch (error) {
         console.log("Error signing up", error);
@@ -54,14 +55,20 @@ function Signup() {
           <form className="card log-in-card" onSubmit={signin}>
             <div data-mdb-input-init className="form-outline mb-4 text-center">
               <img src={smallLogo} alt="" className="logo" />
-              <h5 className="mt-2 fw-bold">We have emailed you a code</h5>
+              <br />
+              <small>
+                Hi, we have send a verification email to{" "}
+                <h6 className="fw-bold">{email}</h6> Please enter your details
+                to join myWorkSpace
+              </small>
+              {/* <h5 className="mt-2 fw-bold">We have emailed you a code</h5>
             </div>
             <small>
               To complete your account setup, enter the code <br /> we have send
               to:
               <h6 className="fw-bold">{email}</h6>
-            </small>
-            <div
+            </small> */}
+              {/* <div
               data-mdb-input-init
               className="form-outline code-input mt-2 mb-4"
             >
@@ -83,6 +90,7 @@ function Signup() {
                   <input type="number" className="form-control" />
                 </Col>
               </Row>
+            </div> */}
             </div>
             <div data-mdb-input-init className="form-outline mb-4">
               <h6>Create username</h6>

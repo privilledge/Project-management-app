@@ -40,7 +40,8 @@ function Login() {
       if (data !== "Invalid login") {
         console.log("User logged in successfully");
         localStorage.setItem("token", data.token);
-        console.log(data.username);
+        localStorage.setItem("username", data.username);
+
         dispatch(setUserName(data.username));
         navigate("/pma/home");
       } else {

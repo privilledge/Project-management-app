@@ -73,7 +73,7 @@ function Home() {
                 {username != "" ? (
                   <h2 className="fw-bold py-0 mb-0">Hi {username}</h2>
                 ) : (
-                  <h2 className="fw-bold py-0 mb-0">Hi Privilledge</h2>
+                  <h2 className="fw-bold py-0 mb-0">Hi Kate Moore</h2>
                 )}
                 <small className="mb-0 mt-0">Welcome to your workspace</small>
               </Col>

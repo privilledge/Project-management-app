@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import CreateProjectModal from "./CreateProjectModal";
 import { useNavigate } from "react-router";
 
-function Projects() {
+function Projects({ userId }) {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
@@ -22,16 +22,16 @@ function Projects() {
     const getProjects = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9090/projects/getProjects"
+          `http://localhost:9090/projects/getProjects`
         );
         const result = await response.json();
         setProjects(result);
       } catch (error) {
-        console.log("Failed to fetch");
+        console.log("Failed to fetch", error);
       }
     };
     getProjects();
-  }, []);
+  }, [userId]);
   const projectChunks = [];
   for (let i = 0; i < projects.length; i += 3) {
     projectChunks.push(projects.slice(i, i + 3));
