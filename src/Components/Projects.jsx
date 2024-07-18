@@ -20,12 +20,24 @@ function Projects({ userId }) {
 
   useEffect(() => {
     const getProjects = async () => {
+      const token = localStorage.getItem("token");
+      if (!token || token.split(".").length !== 3) {
+        console.log("Invalid token");
+      }
+
       try {
         const response = await fetch(
-          `http://localhost:9090/projects/getProjects`
+          "http://localhost:9090/projects/getProjectByUser",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/application/x-www-form-urlencoded",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        const result = await response.json();
-        setProjects(result);
+        const projects = await response.json();
+        setProjects(projects);
       } catch (error) {
         console.log("Failed to fetch", error);
       }

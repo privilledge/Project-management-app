@@ -14,18 +14,23 @@ function CreateProjectModal({ show, handleClose, setAddSuccess }) {
     addedDate: "",
     dueDate: "",
     progress: "",
+    user_id: "",
   });
 
   const handleSelectedValue = (value) => setSelectedValue(value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(
         "http://localhost:9090/projects/addProject",
         {
           method: "POST",
-          headers: { "Content-type": "application/json" },
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(data),
         }
       );
@@ -40,7 +45,8 @@ function CreateProjectModal({ show, handleClose, setAddSuccess }) {
       }
       navigate("/pma/projects");
     } catch (error) {
-      console.log("Failed to add project");
+      console.log("Failed to add project", error);
+      console.log(token);
     }
   };
 

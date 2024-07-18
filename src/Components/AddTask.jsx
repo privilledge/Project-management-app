@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Modal, Col } from "react-bootstrap";
 
-const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
+const AddTask = ({
+  show,
+  handleClose,
+  showNotification,
+  setAddSuccess,
+  userId,
+}) => {
   const [taskData, setTaskData] = useState({
     taskName: "",
     taskType: "ordinary",
@@ -14,27 +20,43 @@ const AddTask = ({ show, handleClose, showNotification, setAddSuccess }) => {
 
   useEffect(() => {
     const getProjects = async () => {
+      const token = localStorage.getItem("token");
+      if (!token || token.split(".").length !== 3) {
+        console.log("Invalid token");
+      }
+
       try {
         const response = await fetch(
-          "http://localhost:9090/projects/getProjects"
+          "http://localhost:9090/projects/getProjectByUser",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/application/x-www-form-urlencoded",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        const result = await response.json();
-        setProjects(result);
+        const projects = await response.json();
+        setProjects(projects);
       } catch (error) {
-        console.log("Failed to fetch projects", error);
+        console.log("Failed to fetch", error);
       }
     };
     getProjects();
-  }, []);
+  }, [userId]);
 
   const addTask = async (e) => {
+    const token = localStorage.getItem("token");
     e.preventDefault();
     const newTask = { ...taskData, project: { id: projectId } };
     if (taskData.taskName.length > 0 && projectId) {
       try {
         const response = await fetch("http://localhost:9090/tasks/addTask", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(newTask),
         });
         if (response.ok) {

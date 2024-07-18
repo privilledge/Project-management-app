@@ -22,8 +22,18 @@ function Tasks() {
 
   useEffect(() => {
     const getTasks = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const response = await fetch("http://localhost:9090/tasks/getTasks");
+        const response = await fetch(
+          "http://localhost:9090/tasks/getTasksByUser",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.ok) {
           console.log("Fetched");
         }

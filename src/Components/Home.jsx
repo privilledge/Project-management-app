@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-function Home() {
+function Home({ userId }) {
   const username = useSelector((state) => state.username);
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
@@ -25,13 +25,23 @@ function Home() {
   const handleHideModal = () => setShowModal(false);
   useEffect(() => {
     const getTasks = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const response = await fetch("http://localhost:9090/tasks/getTasks");
+        const response = await fetch(
+          "http://localhost:9090/tasks/getTasksByUser",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.ok) {
           console.log("Fetched");
         }
         const result = await response.json();
-        setTasks(result.slice(0, 5));
+        setTasks(result);
       } catch (error) {
         console.log("Failed to fetch data");
       }
@@ -40,24 +50,50 @@ function Home() {
   }, []);
   useEffect(() => {
     const getProjects = async () => {
+      const token = localStorage.getItem("token");
+      if (!token || token.split(".").length !== 3) {
+        console.log("Invalid token");
+      }
+
       try {
         const response = await fetch(
-          "http://localhost:9090/projects/getProjects",
+          "http://localhost:9090/projects/getProjectByUser",
           {
             method: "GET",
-            header: {},
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            headers: {
+              "Content-Type": "application/application/x-www-form-urlencoded",
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
-        const result = await response.json();
-        setProjects(result.slice(0, 3));
+        const projects = await response.json();
+        setProjects(projects);
       } catch (error) {
-        console.log("Failed to fetch");
+        console.log("Failed to fetch", error);
       }
     };
     getProjects();
-  }, []);
+  }, [userId]);
+  // useEffect(() => {
+  //   const getProjects = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "http://localhost:9090/projects/getProjects",
+  //         {
+  //           method: "GET",
+  //           header: {},
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         }
+  //       );
+  //       const result = await response.json();
+  //       setProjects(result.slice(0, 3));
+  //     } catch (error) {
+  //       console.log("Failed to fetch");
+  //     }
+  //   };
+  //   getProjects();
+  // }, []);
   return (
     <>
       <Sidebar />
@@ -129,7 +165,7 @@ function Home() {
                         <svg
                           stroke="currentColor"
                           fill="#ff0854"
-                          stroke-width="0"
+                          strokeWidth="0"
                           viewBox="0 0 16 16"
                           height="1.2em"
                           width="1.2em"
@@ -138,7 +174,7 @@ function Home() {
                           style={{ cursor: "pointer" }}
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             clip-rule="evenodd"
                             d="M4 4h3v1H4v3H3V5H0V4h3V1h1v3zM1 14.5V9h1v5h12V7H8V6h6V4H8V3h6.5l.5.5v11l-.5.5h-13l-.5-.5z"
                           ></path>
@@ -164,7 +200,7 @@ function Home() {
                             <svg
                               stroke="currentColor"
                               fill="#ff0854"
-                              stroke-width="0"
+                              strokeWidth="0"
                               viewBox="0 0 640 512"
                               height="1em"
                               width="1em"
@@ -182,7 +218,7 @@ function Home() {
                           <svg
                             stroke="currentColor"
                             fill="#ff0854"
-                            stroke-width="0"
+                            strokeWidth="0"
                             viewBox="0 0 16 16"
                             height="1.2em"
                             width="1.2em"
@@ -191,7 +227,7 @@ function Home() {
                             style={{ cursor: "pointer" }}
                           >
                             <path
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               clip-rule="evenodd"
                               d="M4 4h3v1H4v3H3V5H0V4h3V1h1v3zM1 14.5V9h1v5h12V7H8V6h6V4H8V3h6.5l.5.5v11l-.5.5h-13l-.5-.5z"
                             ></path>
