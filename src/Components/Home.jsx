@@ -74,26 +74,7 @@ function Home({ userId }) {
     };
     getProjects();
   }, [userId]);
-  // useEffect(() => {
-  //   const getProjects = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "http://localhost:9090/projects/getProjects",
-  //         {
-  //           method: "GET",
-  //           header: {},
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         }
-  //       );
-  //       const result = await response.json();
-  //       setProjects(result.slice(0, 3));
-  //     } catch (error) {
-  //       console.log("Failed to fetch");
-  //     }
-  //   };
-  //   getProjects();
-  // }, []);
+
   return (
     <>
       <Sidebar />
@@ -139,7 +120,7 @@ function Home({ userId }) {
               <div className="col-lg-7">
                 <div className="card mb-1">
                   <div className="card-body">
-                    <h6 className="fw-bold">Tasks</h6>
+                    <h6 className="fw-bold">To-do Tasks</h6>
                     {tasks.length > 0 ? (
                       tasks.map((task) => (
                         <ul className="mt-3 list-unstyled">
@@ -195,7 +176,7 @@ function Home({ userId }) {
                     <h6 className="fw-bold">Project directory</h6>
                     <ul className="mt-3 list-unstyled">
                       {projects.length > 0 ? (
-                        projects.map((project) => (
+                        projects.slice(0, 3).map((project) => (
                           <li className="" style={{ cursor: "pointer" }}>
                             <svg
                               stroke="currentColor"

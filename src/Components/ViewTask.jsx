@@ -33,40 +33,37 @@ function ViewTask() {
     setEditShowModal(true);
   };
 
-  useEffect(() => {
-    const getTask = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:9090/tasks/taskById/${id}`
-        );
-        if (response.ok) {
-          const result = await response.json();
-          setTask(result);
+  const getTask = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9090/tasks/taskById/${id}`
+      );
+      if (response.ok) {
+        const result = await response.json();
+        setTask(result);
 
-          // Fetch project details here if needed
-          if (result.projectId) {
-            const projectResponse = await fetch(
-              `http://localhost:9090/projects/getProjectById/${result.projectId}`
-            );
-            if (projectResponse.ok) {
-              const projectResult = await projectResponse.json();
-              setTask((prevTask) => ({
-                ...prevTask,
-                projectName: projectResult.projectName,
-              }));
-            } else {
-              console.log("Failed to fetch project details");
-            }
+        // Fetch project details here if needed
+        if (result.projectId) {
+          const projectResponse = await fetch(
+            `http://localhost:9090/projects/getProjectById/${result.projectId}`
+          );
+          if (projectResponse.ok) {
+            const projectResult = await projectResponse.json();
+            setTask((prevTask) => ({
+              ...prevTask,
+              projectName: projectResult.projectName,
+            }));
+          } else {
+            console.log("Failed to fetch project details");
           }
-        } else {
-          console.log("Failed to fetch task");
         }
-      } catch (error) {
-        console.log("Failed to get task", error);
+      } else {
+        console.log("Failed to fetch task");
       }
-    };
-    getTask();
-  }, [id]);
+    } catch (error) {
+      console.log("Failed to get task", error);
+    }
+  };
 
   const handleDeleteTask = async (e) => {
     e.preventDefault();
